@@ -326,10 +326,10 @@ step_2() {
     # Load brew environment for this script session
     echo "Loading Homebrew environment for current session..."
     if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
-        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+        eval "$(sudo -u "$REAL_USER" /home/linuxbrew/.linuxbrew/bin/brew shellenv)"
         export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
     elif [ -f "$REAL_HOME/.linuxbrew/bin/brew" ]; then
-        eval "$($REAL_HOME/.linuxbrew/bin/brew shellenv)"
+        eval "$(sudo -u "$REAL_USER" "$REAL_HOME/.linuxbrew/bin/brew" shellenv)"
         export PATH="$REAL_HOME/.linuxbrew/bin:$REAL_HOME/.linuxbrew/sbin:$PATH"
     fi
 
