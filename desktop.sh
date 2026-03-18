@@ -105,6 +105,14 @@ else
     exit 1
 fi
 
+# macOS must NOT be run as root — Homebrew blocks it entirely
+if $IS_MACOS && [[ "$(id -u)" -eq 0 ]]; then
+    echo -e "${RED}Error: Do not run this script with sudo on macOS.${NC}"
+    echo -e "${YELLOW}Run it normally and it will ask for your password when needed:${NC}"
+    echo -e "${CYAN}  bash desktop.sh${NC}"
+    exit 1
+fi
+
 
 # --- 1. INITIAL PREPARATION ---
 
@@ -203,8 +211,8 @@ fi
 # Helper function to run brew as regular user (not root)
 brew_cmd() {
     if [[ "$(id -u)" -eq 0 ]]; then
-        # Running as root (e.g. via sudo) — invoke brew as the real user
-        sudo -u "$REAL_USER" "$BREW_PREFIX/bin/brew" "$@"
+        # Running as root on Linux — invoke brew as the real user with correct HOME
+        sudo -H -u "$REAL_USER" "$BREW_PREFIX/bin/brew" "$@"
     else
         "$BREW_PREFIX/bin/brew" "$@"
     fi
@@ -449,7 +457,7 @@ step_3() {
         echo "Installing PHP Extensions..."
         pecl install redis 2>/dev/null || true
         pecl install xdebug 2>/dev/null || true
-        pecl install imagick 2>/dev/null || true
+        printf "\n" | pecl install imagick 2>/dev/null || true
         
         echo "Installing Composer..."
         if [ ! -f "/usr/local/bin/composer" ] && [ ! -f "$BREW_PREFIX/bin/composer" ]; then
