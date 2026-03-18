@@ -94,8 +94,25 @@ declare -a STEP_STATUS
 # --- DETECT REAL USER ---
 if [[ -n "$SUDO_USER" ]]; then
     REAL_USER="$SUDO_USER"
+elif [[ "$(id -u)" -eq 0 ]]; then
+    _LOGNAME=$(logname 2>/dev/null)
+    _WHO=$(who am i 2>/dev/null | awk '{print $1}')
+    if [[ -n "$_LOGNAME" && "$_LOGNAME" != "root" ]]; then
+        REAL_USER="$_LOGNAME"
+    elif [[ -n "$_WHO" && "$_WHO" != "root" ]]; then
+        REAL_USER="$_WHO"
+    else
+        REAL_USER=$(whoami)
+    fi
 else
     REAL_USER=$(whoami)
+fi
+# Last resort: if still root, detect from Homebrew installation ownership
+if [[ "$REAL_USER" == "root" && -d "/home/linuxbrew/.linuxbrew" ]]; then
+    _BREW_OWNER=$(stat -c '%U' /home/linuxbrew/.linuxbrew 2>/dev/null)
+    if [[ -n "$_BREW_OWNER" && "$_BREW_OWNER" != "root" ]]; then
+        REAL_USER="$_BREW_OWNER"
+    fi
 fi
 REAL_HOME=$(getent passwd "$REAL_USER" 2>/dev/null | cut -d: -f6)
 [[ -z "$REAL_HOME" ]] && REAL_HOME="$HOME"
@@ -136,8 +153,8 @@ sudo apt-get install -y figlet git lsb-release >/dev/null 2>&1 || sudo apt-get i
 # --- UI & LOGIC FUNCTIONS ---
 
 brew_cmd() {
-    if [[ "$(id -u)" -eq 0 ]]; then
-        sudo -u "$REAL_USER" "$BREW_PREFIX/bin/brew" "$@"
+    if [[ "$(id -u)" -eq 0 && -n "$REAL_USER" && "$REAL_USER" != "root" ]]; then
+        ( cd "$REAL_HOME" && runuser -u "$REAL_USER" -- env HOME="$REAL_HOME" "$BREW_PREFIX/bin/brew" "$@" )
     else
         "$BREW_PREFIX/bin/brew" "$@"
     fi
@@ -304,7 +321,7 @@ step_2() {
         [ ! -f "$BREW_EXEC" ] && BREW_EXEC="$REAL_HOME/.linuxbrew/bin/brew"
 
         if [ -f "$BREW_EXEC" ]; then
-            sudo -u $REAL_USER "$BREW_EXEC" update
+            brew_cmd update
         fi
     fi
 
@@ -326,10 +343,10 @@ step_2() {
     # Load brew environment for this script session
     echo "Loading Homebrew environment for current session..."
     if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
-        eval "$(sudo -u "$REAL_USER" /home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+        eval "$(cd "$REAL_HOME" && runuser -u "$REAL_USER" -- env HOME="$REAL_HOME" /home/linuxbrew/.linuxbrew/bin/brew shellenv 2>/dev/null)"
         export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
     elif [ -f "$REAL_HOME/.linuxbrew/bin/brew" ]; then
-        eval "$(sudo -u "$REAL_USER" "$REAL_HOME/.linuxbrew/bin/brew" shellenv)"
+        eval "$(cd "$REAL_HOME" && runuser -u "$REAL_USER" -- env HOME="$REAL_HOME" "$REAL_HOME/.linuxbrew/bin/brew" shellenv 2>/dev/null)"
         export PATH="$REAL_HOME/.linuxbrew/bin:$REAL_HOME/.linuxbrew/sbin:$PATH"
     fi
 
@@ -382,22 +399,20 @@ step_4() {
     echo "Installing Modern Unix Tools via Homebrew..."
     TOOLS="bat eza zoxide fzf ripgrep fd lazygit lazydocker neovim glow jq tldr fastfetch duf bandwhich gping trippy"
 
-    local BREW_BIN="/home/linuxbrew/.linuxbrew/bin/brew"
-    [ ! -f "$BREW_BIN" ] && BREW_BIN="$REAL_HOME/.linuxbrew/bin/brew"
-
-    if [ -f "$BREW_BIN" ]; then
-        sudo -u $REAL_USER "$BREW_BIN" install $TOOLS || sudo -u $REAL_USER "$BREW_BIN" upgrade $TOOLS
-
-        # FZF keybindings
-        local FZF_OPT="/home/linuxbrew/.linuxbrew/opt/fzf"
-        [ ! -d "$FZF_OPT" ] && FZF_OPT="$REAL_HOME/.linuxbrew/opt/fzf"
-        if [ -d "$FZF_OPT" ]; then
-            sudo -u $REAL_USER "$FZF_OPT/install" --all --no-bash --no-fish > /dev/null 2>&1
-        fi
-    else
+    if ! command -v brew &>/dev/null; then
         echo -e "${RED}Error: Homebrew binary not found. Skipping modern tools installation.${NC}"
         return 1
     fi
+
+    brew_cmd install $TOOLS || brew_cmd upgrade $TOOLS
+
+    # FZF keybindings
+    local FZF_OPT="/home/linuxbrew/.linuxbrew/opt/fzf"
+    [ ! -d "$FZF_OPT" ] && FZF_OPT="$REAL_HOME/.linuxbrew/opt/fzf"
+    if [ -d "$FZF_OPT" ]; then
+        sudo -H -u $REAL_USER "$FZF_OPT/install" --all --no-bash --no-fish > /dev/null 2>&1
+    fi
+
 }
 
 
