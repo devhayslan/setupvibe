@@ -70,21 +70,27 @@ if sudo fuser /var/lib/apt/lists/lock /var/lib/dpkg/lock-frontend /var/lib/dpkg/
 fi
 
 # --- ENSURE BASE TOOLS FOR REPO MANAGEMENT ---
-echo -e "${YELLOW}Installing base tools (gnupg, curl, ca-certificates)...${NC}"
+echo -e "${YELLOW}Installing base tools (gpg, gnupg, curl, ca-certificates)...${NC}"
 sudo apt-get update
-sudo apt-get install -y gnupg gnupg2 curl ca-certificates lsb-release software-properties-common
+sudo apt-get install -y gpg gnupg gnupg2 curl ca-certificates lsb-release software-properties-common
 
-    # Diagnostic: check for gpg
-    if ! command -v gpg &>/dev/null; then
-        echo -e "${YELLOW}Checking for gpg in common paths...${NC}"
-        if [[ -f "/usr/bin/gpg" ]]; then
-            echo "Found gpg at /usr/bin/gpg"
-        elif [[ -f "/usr/bin/gpg2" ]]; then
-            echo "Found gpg2 at /usr/bin/gpg2. Creating symlink..."
-            sudo ln -sf /usr/bin/gpg2 /usr/bin/gpg
-        fi
+# Robust GPG detection
+GPG_CMD=""
+for p in $(which gpg 2>/dev/null) $(which gpg2 2>/dev/null) /usr/bin/gpg /usr/bin/gpg2 /bin/gpg /bin/gpg2 /usr/local/bin/gpg; do
+    if [[ -x "$p" ]]; then
+        GPG_CMD="$p"
+        break
     fi
-    GPG_CMD=$(command -v gpg || command -v gpg2 || echo "/usr/bin/gpg")
+done
+
+if [[ -z "$GPG_CMD" ]]; then
+    echo -e "${YELLOW}GPG not found in path, attempting to locate...${NC}"
+    # Last ditch effort: search for it
+    GPG_CMD=$(find /usr/bin /bin /usr/local/bin -name "gpg" -o -name "gpg2" 2>/dev/null | head -n 1)
+fi
+
+[[ -z "$GPG_CMD" ]] && GPG_CMD="/usr/bin/gpg"
+echo -e "${GREEN}Using GPG: $GPG_CMD${NC}"
 fi
 
 # --- LINUX ONLY ---
