@@ -73,11 +73,12 @@ if [[ "$(uname -s)" == "Linux" ]]; then
     fi
 
     # --- ENSURE BASE TOOLS FOR REPO MANAGEMENT ---
-    echo -e "${YELLOW}Installing base tools (gpg, gnupg, curl, ca-certificates)...${NC}"
-    sudo apt-get update
-    sudo apt-get install -y gpg gnupg gnupg2 curl ca-certificates lsb-release software-properties-common
+    echo -e "${YELLOW}Installing base tools (gpg, curl, ca-certificates)...${NC}"
+    export DEBIAN_FRONTEND=noninteractive
+    sudo apt-get update -y
+    sudo apt-get install -y -q gnupg gnupg2 curl ca-certificates lsb-release software-properties-common apt-transport-https
     
-    # Robust GPG detection
+    # Robust GPG detection (try without sudo first for current user path)
     GPG_CMD=""
     for p in $(which gpg 2>/dev/null) $(which gpg2 2>/dev/null) /usr/bin/gpg /usr/bin/gpg2 /bin/gpg /bin/gpg2 /usr/local/bin/gpg; do
         if [[ -x "$p" ]]; then
@@ -243,6 +244,28 @@ fi
 
 
 # --- UI & LOGIC FUNCTIONS ---
+
+# Helper to install GPG keys safely
+install_key() {
+    local url=$1
+    local dest=$2
+    echo -e "${YELLOW}Installing key:${NC} $url ➜ $dest"
+    sudo mkdir -p -m 755 /etc/apt/keyrings
+    # Try dearmor if GPG is available
+    if [[ -n "$GPG_CMD" ]] && command -v "$GPG_CMD" >/dev/null 2>&1; then
+        if curl -fsSL "$url" | "$GPG_CMD" --dearmor --yes | sudo tee "$dest" > /dev/null; then
+            sudo chmod a+r "$dest"
+            return 0
+        fi
+    fi
+    # Fallback: download as-is (modern APT handles armored keys)
+    if curl -fsSL "$url" | sudo tee "$dest" > /dev/null; then
+        sudo chmod a+r "$dest"
+        return 0
+    fi
+    echo -e "${RED}✘ Failed to install key from $url${NC}"
+    return 1
+}
 
 # Helper function to run brew as regular user (not root)
 brew_cmd() {
@@ -418,9 +441,7 @@ step_1() {
             libyaml-dev autoconf bison procps file tmux
 
         # Adding Charmbracelet Repo (needed for Glow)
-        sudo mkdir -p -m 755 /etc/apt/keyrings
-        curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo $GPG_CMD --dearmor -o /etc/apt/keyrings/charm.gpg --yes
-        sudo chmod a+r /etc/apt/keyrings/charm.gpg
+        install_key "https://repo.charm.sh/apt/gpg.key" "/etc/apt/keyrings/charm.gpg"
         echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
         sudo apt-get update -qq
     fi
@@ -566,8 +587,7 @@ step_3() {
             case "$DISTRO_CODENAME" in
                 forky|sid|experimental) PHP_CODENAME="trixie" ;;
             esac
-            curl -fsSL https://packages.sury.org/php/apt.gpg | sudo $GPG_CMD --dearmor -o /etc/apt/keyrings/php.gpg --yes
-            sudo chmod a+r /etc/apt/keyrings/php.gpg
+            install_key "https://packages.sury.org/php/apt.gpg" "/etc/apt/keyrings/php.gpg"
             echo "deb [signed-by=/etc/apt/keyrings/php.gpg] https://packages.sury.org/php/ $PHP_CODENAME main" | sudo tee /etc/apt/sources.list.d/php.list
         fi
         sudo apt-get update -qq
@@ -706,8 +726,7 @@ step_6() {
         curl -fsSL https://bun.sh/install | bash
     else
         echo "Setup NodeSource..."
-        sudo mkdir -p /etc/apt/keyrings
-        curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo $GPG_CMD --dearmor -o /etc/apt/keyrings/nodesource.gpg --yes
+        install_key "https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key" "/etc/apt/keyrings/nodesource.gpg"
         echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_24.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
         sudo apt-get update -qq
         sudo apt-get install -y nodejs
@@ -750,8 +769,7 @@ step_7() {
                 trixie|forky|sid|experimental) DOCKER_CODENAME="bookworm" ;;
             esac
         fi
-        curl -fsSL "https://download.docker.com/linux/$DISTRO_ID/gpg" | sudo $GPG_CMD --dearmor -o /etc/apt/keyrings/docker.gpg --yes
-        sudo chmod a+r /etc/apt/keyrings/docker.gpg
+        install_key "https://download.docker.com/linux/$DISTRO_ID/gpg" "/etc/apt/keyrings/docker.gpg"
         echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/$DISTRO_ID $DOCKER_CODENAME stable" | sudo tee /etc/apt/sources.list.d/docker.list
         sudo apt-get update -qq
         sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-buildx-plugin
