@@ -8,9 +8,10 @@ fi
 
 # Define PATHs before loading plugins so they can find the tools
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
-export PATH=$PATH:/usr/local/go/bin
+export PATH="$HOME/.local/go/bin:/usr/local/go/bin:$PATH"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export BUN_INSTALL="$HOME/.bun"

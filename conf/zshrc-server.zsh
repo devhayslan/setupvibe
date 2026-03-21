@@ -6,7 +6,7 @@ elif [ -f "$HOME/.linuxbrew/bin/brew" ]; then
     eval "$($HOME/.linuxbrew/bin/brew shellenv)"
 fi
 
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.npm-global/bin:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
