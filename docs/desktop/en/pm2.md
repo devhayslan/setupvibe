@@ -1,12 +1,15 @@
 # PM2 Guide
 
-SetupVibe installs [PM2](https://pm2.keymetrics.io/) globally and configures it for auto-startup. A default [`ecosystem.config.js`](https://pm2.keymetrics.io/docs/usage/application-declaration/) template is generated in your home directory during setup.
+SetupVibe installs [PM2](https://pm2.keymetrics.io/) globally and configures it for auto-startup on both Desktop and Server editions.
+
+- **Desktop:** auto-startup via launchd (macOS) or systemd (Linux); downloads `ecosystem.config.js` from the repository to `~/ecosystem.config.js`
+- **Server:** auto-startup via systemd; generates a default `ecosystem.config.js` inline to `~/ecosystem.config.js`
 
 ---
 
 ## What is PM2?
 
-PM2 is a **production process manager for Node.js** — it keeps your applications alive, restarts them on crash, handles log management, and integrates with system init systems (launchd on macOS, systemd on Linux).
+PM2 is a **production process manager for Node.js** — it keeps your applications alive, restarts them on crash, handles log management, and integrates with system init systems.
 
 **Core concepts:**
 
@@ -95,7 +98,7 @@ pm2 unstartup
 
 ## Ecosystem File
 
-The ecosystem file (`ecosystem.config.js`) is the recommended way to manage apps. A template is generated at `~/ecosystem.config.js` during SetupVibe setup.
+The ecosystem file (`ecosystem.config.js`) is the recommended way to manage apps. A template is generated at `~/ecosystem.config.js` during setup.
 
 ### Default Template
 
@@ -133,8 +136,6 @@ module.exports = {
 
 ## Configuration Reference
 
-Full option reference per the [PM2 Application Declaration docs](https://pm2.keymetrics.io/docs/usage/application-declaration/).
-
 ### General
 
 | Option | Type | Default | Description |
@@ -160,7 +161,7 @@ Full option reference per the [PM2 Application Declaration docs](https://pm2.key
 |---|---|---|---|
 | `autorestart` | boolean | `true` | Restart on crash |
 | `max_restarts` | number | `10` | Max consecutive unstable restarts before stopping |
-| `min_uptime` | string/number | — | Minimum uptime (ms or string like `"2s"`) to be considered stable |
+| `min_uptime` | string/number | — | Minimum uptime to be considered stable (ms or `"2s"`) |
 | `restart_delay` | number | `0` | Milliseconds to wait before restarting a crashed app |
 | `max_memory_restart` | string | — | Restart if RSS exceeds this value (e.g. `"300M"`, `"1G"`) |
 | `kill_timeout` | number | `1600` | Milliseconds before SIGKILL after SIGTERM |
@@ -209,14 +210,12 @@ Full option reference per the [PM2 Application Declaration docs](https://pm2.key
 
 ## Global PM2 Settings
 
-SetupVibe configures these module-level defaults during setup:
+SetupVibe configures these during setup:
 
 | Setting | Value | Description |
 |---|---|---|
 | `pm2:autodump` | `true` | Auto-save the process list on any change |
 | `pm2:log_date_format` | `YYYY-MM-DD HH:mm:ss` | Default timestamp format for all logs |
-
-Manage manually with:
 
 ```bash
 pm2 set pm2:autodump true
@@ -247,8 +246,8 @@ pm2 scale myapp +2    # Add 2 more instances
 
 SetupVibe configures PM2 to start automatically on boot:
 
-- **macOS** — registers a launchd agent
-- **Linux** — registers a systemd service
+- **macOS** — registers a launchd agent (`pm2 startup launchd`)
+- **Linux** — registers a systemd service (`pm2 startup systemd`)
 
 To redo this manually:
 

@@ -58,6 +58,16 @@ Both `desktop.sh` and `server.sh` follow a numbered-step pattern (functions pref
 
 Subset of desktop steps — no Homebrew, no language ecosystems (PHP, Ruby, Python, Go, Rust) or desktop-specific tools. Node.js is installed via NodeSource APT repo. Focus on base tools, Docker, Ansible, shell, tmux, monitoring, and AI CLIs.
 
+### `docs/` Directory
+
+| Path | Content |
+|---|---|
+| `docs/README.md` | Overview and comparison table of both editions |
+| `docs/desktop/en/README.md` | Full desktop edition documentation (14 steps) |
+| `docs/server/en/README.md` | Server edition documentation (9 steps) |
+| `docs/desktop/en/tmux.md` | Tmux plugin and keybinding reference (shared by both editions) |
+| `docs/desktop/en/pm2.md` | PM2 command and configuration reference (shared by both editions) |
+
 ### `conf/` Directory
 
 Configuration files deployed by the scripts to the user's home directory:

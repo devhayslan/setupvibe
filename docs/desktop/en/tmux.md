@@ -1,6 +1,8 @@
 # Tmux Guide
 
-SetupVibe installs and configures tmux with [TPM](https://github.com/tmux-plugins/tpm) and a curated plugin set. Configuration lives in [`tmux.conf`](../../conf/tmux.conf) and is downloaded automatically during setup.
+SetupVibe installs and configures tmux with [TPM](https://github.com/tmux-plugins/tpm) and a curated plugin set. Configuration lives in [`conf/tmux.conf`](../../../conf/tmux.conf) and is downloaded automatically during setup.
+
+This guide applies to both the Desktop and Server editions — both receive the same `tmux.conf`.
 
 ---
 
@@ -109,7 +111,7 @@ After opening tmux, press `prefix + I` (capital i) to install all plugins.
 | `q` (in copy mode) | Exit copy mode |
 | `Space` (in copy mode) | Start selection |
 | `Enter` (in copy mode) | Copy selection and exit |
-| `/ ` (in copy mode) | Search forward |
+| `/` (in copy mode) | Search forward |
 | `?` (in copy mode) | Search backward |
 
 ### Misc
@@ -185,8 +187,6 @@ Navigate between tmux panes and vim splits with the same keys.
 
 #### [NHDaly/tmux-better-mouse-mode](https://github.com/NHDaly/tmux-better-mouse-mode)
 
-Improves mouse behavior in tmux.
-
 | Feature | Behavior |
 |---|---|
 | Scroll down in copy mode | Exits copy mode automatically |
@@ -199,8 +199,6 @@ Improves mouse behavior in tmux.
 
 #### [tmux-plugins/tmux-yank](https://github.com/tmux-plugins/tmux-yank)
 
-Copy text to the system clipboard.
-
 | Keybind | Context | Action |
 |---|---|---|
 | `prefix + y` | Normal | Copy text on command line |
@@ -209,8 +207,6 @@ Copy text to the system clipboard.
 | `Y` | Copy mode | Copy selection and paste to command line |
 
 #### [CrispyConductor/tmux-copy-toolkit](https://github.com/CrispyConductor/tmux-copy-toolkit)
-
-Enhanced copy mode utilities.
 
 | Keybind | Action |
 |---|---|
@@ -234,8 +230,6 @@ Recognizes: URLs, IPs, Git hashes, file paths, UUIDs, hex colors, numbers, and m
 
 #### [tmux-plugins/tmux-open](https://github.com/tmux-plugins/tmux-open)
 
-Open highlighted text from copy mode.
-
 | Keybind | Context | Action |
 |---|---|---|
 | `o` | Copy mode | Open with system default app |
@@ -244,13 +238,9 @@ Open highlighted text from copy mode.
 
 #### [wfxr/tmux-fzf-url](https://github.com/wfxr/tmux-fzf-url)
 
-Lists all visible URLs with fzf for quick opening.
-
 | Keybind | Action |
 |---|---|
 | `prefix + u` | Open URL picker |
-
-> `u` is not a default tmux binding — no conflict.
 
 ---
 
@@ -268,8 +258,6 @@ Save and restore the entire tmux environment across reboots.
 Saves: windows, panes, working directories, pane contents, running programs.
 
 #### [tmux-plugins/tmux-continuum](https://github.com/tmux-plugins/tmux-continuum)
-
-Automatic session saving and restoration.
 
 | Feature | Value |
 |---|---|
@@ -308,8 +296,6 @@ Manage sessions, windows, panes, and run commands via fzf.
 
 #### [Freed-Wu/tmux-digit](https://github.com/Freed-Wu/tmux-digit)
 
-Visual number overlay for quick window switching.
-
 | Keybind | Action |
 |---|---|
 | `prefix + 0–9` | Jump directly to window by index |
@@ -324,8 +310,6 @@ Highlights the status bar when the prefix key is active, in copy mode, or in syn
 
 #### [alexwforsythe/tmux-which-key](https://github.com/alexwforsythe/tmux-which-key)
 
-Shows an interactive popup listing all available keybinds — no need to memorize.
-
 | Keybind | Action |
 |---|---|
 | `prefix + Space` | Open which-key menu |
@@ -334,13 +318,9 @@ Shows an interactive popup listing all available keybinds — no need to memoriz
 
 #### [jaclu/tmux-menus](https://github.com/jaclu/tmux-menus)
 
-Contextual popup menus for sessions, windows, panes, and settings.
-
 | Keybind | Action |
 |---|---|
 | `prefix + g` | Open context menu |
-
-> Uses `prefix + g` — avoids conflict with `prefix + M` (clear mark) and `prefix + \` (pain-control split).
 
 ---
 
@@ -348,22 +328,16 @@ Contextual popup menus for sessions, windows, panes, and settings.
 
 #### [2KAbhishek/tmux2k](https://github.com/2KAbhishek/tmux2k)
 
-Feature-rich status bar with widgets and multiple themes.
-
-**Configured layout:**
-
 | Position | Widgets |
 |---|---|
 | Left | `git` · `cwd` · `docker` · `mise` |
 | Right | `cpu` · `ram` · `network` · `time` |
 
-**Theme:** `onedark` with powerline separators (``, ``).
+**Theme:** `onedark` with powerline separators.
 
 ---
 
 ## Key Conflict Resolution
-
-tmux has many built-in keybinds. The table below shows every conflict found and how it is resolved in [`tmux.conf`](../../conf/tmux.conf).
 
 | Key | tmux default | Plugin | Resolution |
 |---|---|---|---|
