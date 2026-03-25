@@ -6,12 +6,12 @@ A lean, focused setup script for Linux servers. No Homebrew, no language ecosyst
 
 ## System Requirements
 
-| | Supported |
-|---|---|
-| **Ubuntu** | 24.04+ |
-| **Debian** | 12+ |
-| **Zorin OS** | 18+ |
-| **Linux Mint** | 21+ |
+|                   | Supported                       |
+| ----------------- | ------------------------------- |
+| **Ubuntu**        | 24.04+                          |
+| **Debian**        | 12+                             |
+| **Zorin OS**      | 18+                             |
+| **Linux Mint**    | 21+                             |
 | **Architectures** | x86_64 (amd64), ARM64 (aarch64) |
 
 > Linux only. Exits immediately if run on macOS.
@@ -49,10 +49,12 @@ Installs via APT:
 ### Step 2 — Docker, Ansible & GitHub CLI
 
 **Docker** — installed from the official Docker APT repo:
+
 - `docker-ce`, `docker-ce-cli`, `containerd.io`, `docker-compose-plugin`, `docker-buildx-plugin`
 - User is added to the `docker` group
 
 **Ansible:**
+
 - Ubuntu → via `ansible/ansible` PPA
 - Debian → `ansible-core` from APT
 
@@ -85,19 +87,19 @@ APT packages:
 
 #### Shell Aliases
 
-| Alias | Command |
-|---|---|
-| `reload` | `source ~/.zshrc` |
-| `zconfig` | `nano ~/.zshrc` |
-| `update` | `sudo apt update && sudo apt upgrade` |
-| `d` | `docker` |
-| `dc` | `docker compose` |
-| `syslog` | `sudo journalctl -f` |
-| `ports` | `ss -tulnp` |
-| `meminfo` | `free -h` |
-| `diskinfo` | `df -h` |
-| `cpuinfo` | `lscpu` |
-| `wholistening` | `ss -tulnp` |
+| Alias          | Command                               |
+| -------------- | ------------------------------------- |
+| `reload`       | `source ~/.zshrc`                     |
+| `zconfig`      | `nano ~/.zshrc`                       |
+| `update`       | `sudo apt update && sudo apt upgrade` |
+| `d`            | `docker`                              |
+| `dc`           | `docker compose`                      |
+| `syslog`       | `sudo journalctl -f`                  |
+| `ports`        | `ss -tulnp`                           |
+| `meminfo`      | `free -h`                             |
+| `diskinfo`     | `df -h`                               |
+| `cpuinfo`      | `lscpu`                               |
+| `wholistening` | `ss -tulnp`                           |
 
 #### Oh My Zsh Plugins
 
@@ -116,12 +118,12 @@ Press `prefix + I` inside tmux to install all plugins. See the [Tmux Guide](../.
 
 Installs **Node.js 24** via NodeSource APT repo, then installs globally via `npm install -g`:
 
-| Tool | Package |
-|---|---|
-| PM2 | `pm2` |
-| Claude Code | `@anthropic-ai/claude-code` |
-| Gemini CLI | `@google/gemini-cli` |
-| OpenAI Codex | `@openai/codex` |
+| Tool               | Package                          |
+| ------------------ | -------------------------------- |
+| PM2                | `pm2`                            |
+| Claude Code        | `@anthropic-ai/claude-code`      |
+| Gemini CLI         | `@google/gemini-cli`             |
+| OpenAI Codex       | `@openai/codex`                  |
 | GitHub Copilot CLI | `@githubnext/github-copilot-cli` |
 
 npm global packages are installed to `~/.npm-global` (configured with `npm config set prefix`) when not running as root.
@@ -150,4 +152,4 @@ See the [PM2 Guide](../../desktop/en/pm2.md) for the full command and configurat
 
 Licensed under the **GNU General Public License v3.0** — see [LICENSE](../../LICENSE) for details.
 
-Maintained by [promovaweb.com](https://promovaweb.com) · contact@promovaweb.com
+Maintained by [promovaweb.com](https://promovaweb.com) · <contact@promovaweb.com>

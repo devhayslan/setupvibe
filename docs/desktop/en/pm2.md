@@ -13,12 +13,12 @@ PM2 is a **production process manager for Node.js** — it keeps your applicatio
 
 **Core concepts:**
 
-| Concept | Description |
-|---|---|
-| **App** | A process managed by PM2 (Node.js, Python, Go, or any binary) |
+| Concept            | Description                                                     |
+| ------------------ | --------------------------------------------------------------- |
+| **App**            | A process managed by PM2 (Node.js, Python, Go, or any binary)   |
 | **Ecosystem file** | `ecosystem.config.js` — declarative config for one or more apps |
-| **Cluster mode** | Spawns multiple instances across CPU cores (Node.js only) |
-| **Fork mode** | Single process, works with any runtime (default) |
+| **Cluster mode**   | Spawns multiple instances across CPU cores (Node.js only)       |
+| **Fork mode**      | Single process, works with any runtime (default)                |
 
 ---
 
@@ -138,73 +138,73 @@ module.exports = {
 
 ### General
 
-| Option | Type | Default | Description |
-|---|---|---|---|
-| `name` | string | script filename | App identifier used in `pm2 list` and commands |
-| `script` | string | — | Path to the entry script (required) |
-| `cwd` | string | — | Working directory for the process |
-| `args` | string | — | CLI arguments passed to the script |
-| `interpreter` | string | `node` | Path to the runtime interpreter |
-| `interpreter_args` | string | — | Flags passed to the interpreter (e.g. `--max-old-space-size=4096`) |
-| `force` | boolean | `false` | Allow launching the same script more than once |
+| Option             | Type    | Default         | Description                                                        |
+| ------------------ | ------- | --------------- | ------------------------------------------------------------------ |
+| `name`             | string  | script filename | App identifier used in `pm2 list` and commands                     |
+| `script`           | string  | —               | Path to the entry script (required)                                |
+| `cwd`              | string  | —               | Working directory for the process                                  |
+| `args`             | string  | —               | CLI arguments passed to the script                                 |
+| `interpreter`      | string  | `node`          | Path to the runtime interpreter                                    |
+| `interpreter_args` | string  | —               | Flags passed to the interpreter (e.g. `--max-old-space-size=4096`) |
+| `force`            | boolean | `false`         | Allow launching the same script more than once                     |
 
 ### Scaling
 
-| Option | Type | Default | Description |
-|---|---|---|---|
-| `instances` | number | `1` | Number of instances; `-1` = all CPU cores |
-| `exec_mode` | string | `fork` | `fork` (any runtime) or `cluster` (Node.js only) |
+| Option      | Type   | Default | Description                                      |
+| ----------- | ------ | ------- | ------------------------------------------------ |
+| `instances` | number | `1`     | Number of instances; `-1` = all CPU cores        |
+| `exec_mode` | string | `fork`  | `fork` (any runtime) or `cluster` (Node.js only) |
 
 ### Stability & Restart
 
-| Option | Type | Default | Description |
-|---|---|---|---|
-| `autorestart` | boolean | `true` | Restart on crash |
-| `max_restarts` | number | `10` | Max consecutive unstable restarts before stopping |
-| `min_uptime` | string/number | — | Minimum uptime to be considered stable (ms or `"2s"`) |
-| `restart_delay` | number | `0` | Milliseconds to wait before restarting a crashed app |
-| `max_memory_restart` | string | — | Restart if RSS exceeds this value (e.g. `"300M"`, `"1G"`) |
-| `kill_timeout` | number | `1600` | Milliseconds before SIGKILL after SIGTERM |
-| `shutdown_with_message` | boolean | `false` | Use `process.send('shutdown')` instead of SIGTERM |
-| `wait_ready` | boolean | `false` | Wait for `process.send('ready')` before considering the app online |
-| `listen_timeout` | number | — | Milliseconds to wait for `ready` signal before forcing reload |
+| Option                  | Type          | Default | Description                                                        |
+| ----------------------- | ------------- | ------- | ------------------------------------------------------------------ |
+| `autorestart`           | boolean       | `true`  | Restart on crash                                                   |
+| `max_restarts`          | number        | `10`    | Max consecutive unstable restarts before stopping                  |
+| `min_uptime`            | string/number | —       | Minimum uptime to be considered stable (ms or `"2s"`)              |
+| `restart_delay`         | number        | `0`     | Milliseconds to wait before restarting a crashed app               |
+| `max_memory_restart`    | string        | —       | Restart if RSS exceeds this value (e.g. `"300M"`, `"1G"`)          |
+| `kill_timeout`          | number        | `1600`  | Milliseconds before SIGKILL after SIGTERM                          |
+| `shutdown_with_message` | boolean       | `false` | Use `process.send('shutdown')` instead of SIGTERM                  |
+| `wait_ready`            | boolean       | `false` | Wait for `process.send('ready')` before considering the app online |
+| `listen_timeout`        | number        | —       | Milliseconds to wait for `ready` signal before forcing reload      |
 
 ### Watch
 
-| Option | Type | Default | Description |
-|---|---|---|---|
-| `watch` | boolean/array | `false` | Restart on file changes; pass an array of paths to watch |
-| `ignore_watch` | array | — | Paths or glob patterns excluded from watch |
+| Option         | Type          | Default | Description                                              |
+| -------------- | ------------- | ------- | -------------------------------------------------------- |
+| `watch`        | boolean/array | `false` | Restart on file changes; pass an array of paths to watch |
+| `ignore_watch` | array         | —       | Paths or glob patterns excluded from watch               |
 
 ### Logging
 
-| Option | Type | Default | Description |
-|---|---|---|---|
-| `log_date_format` | string | — | Timestamp format (e.g. `"YYYY-MM-DD HH:mm:ss"`) |
-| `out_file` | string | `~/.pm2/logs/<name>-out.log` | Path for stdout log |
-| `error_file` | string | `~/.pm2/logs/<name>-error.log` | Path for stderr log |
-| `log_file` | string | — | Path for combined stdout+stderr log |
-| `merge_logs` / `combine_logs` | boolean | `false` | Disable per-instance log suffixes in cluster mode |
-| `time` | boolean | `false` | Auto-prefix every log line with a timestamp |
+| Option                        | Type    | Default                        | Description                                       |
+| ----------------------------- | ------- | ------------------------------ | ------------------------------------------------- |
+| `log_date_format`             | string  | —                              | Timestamp format (e.g. `"YYYY-MM-DD HH:mm:ss"`)   |
+| `out_file`                    | string  | `~/.pm2/logs/<name>-out.log`   | Path for stdout log                               |
+| `error_file`                  | string  | `~/.pm2/logs/<name>-error.log` | Path for stderr log                               |
+| `log_file`                    | string  | —                              | Path for combined stdout+stderr log               |
+| `merge_logs` / `combine_logs` | boolean | `false`                        | Disable per-instance log suffixes in cluster mode |
+| `time`                        | boolean | `false`                        | Auto-prefix every log line with a timestamp       |
 
 ### Environment
 
-| Option | Type | Description |
-|---|---|---|
-| `env` | object | Variables injected in all modes |
-| `env_<name>` | object | Variables injected when started with `--env <name>` (e.g. `env_production`) |
-| `filter_env` | array | Strip global env variables matching these prefixes |
-| `instance_var` | string | Variable name holding the instance index (default: `NODE_APP_INSTANCE`) |
-| `appendEnvToName` | boolean | Append the environment name to the app name |
+| Option            | Type    | Description                                                                 |
+| ----------------- | ------- | --------------------------------------------------------------------------- |
+| `env`             | object  | Variables injected in all modes                                             |
+| `env_<name>`      | object  | Variables injected when started with `--env <name>` (e.g. `env_production`) |
+| `filter_env`      | array   | Strip global env variables matching these prefixes                          |
+| `instance_var`    | string  | Variable name holding the instance index (default: `NODE_APP_INSTANCE`)     |
+| `appendEnvToName` | boolean | Append the environment name to the app name                                 |
 
 ### Source Maps & Misc
 
-| Option | Type | Default | Description |
-|---|---|---|---|
-| `source_map_support` | boolean | `true` | Enable source map support for stack traces |
-| `vizion` | boolean | `true` | Track version control metadata |
-| `cron_restart` | string | — | Cron expression for scheduled restarts (e.g. `"0 3 * * *"`) |
-| `post_update` | array | — | Commands to run after a `pm2 pull` update |
+| Option               | Type    | Default | Description                                                 |
+| -------------------- | ------- | ------- | ----------------------------------------------------------- |
+| `source_map_support` | boolean | `true`  | Enable source map support for stack traces                  |
+| `vizion`             | boolean | `true`  | Track version control metadata                              |
+| `cron_restart`       | string  | —       | Cron expression for scheduled restarts (e.g. `"0 3 * * *"`) |
+| `post_update`        | array   | —       | Commands to run after a `pm2 pull` update                   |
 
 ---
 
@@ -212,10 +212,10 @@ module.exports = {
 
 SetupVibe configures these during setup:
 
-| Setting | Value | Description |
-|---|---|---|
-| `pm2:autodump` | `true` | Auto-save the process list on any change |
-| `pm2:log_date_format` | `YYYY-MM-DD HH:mm:ss` | Default timestamp format for all logs |
+| Setting               | Value                 | Description                              |
+| --------------------- | --------------------- | ---------------------------------------- |
+| `pm2:autodump`        | `true`                | Auto-save the process list on any change |
+| `pm2:log_date_format` | `YYYY-MM-DD HH:mm:ss` | Default timestamp format for all logs    |
 
 ```bash
 pm2 set pm2:autodump true
