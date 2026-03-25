@@ -1,6 +1,6 @@
 # SetupVibe — Edición Desktop
 
-> Configuración de entorno de desarrollo multiplataforma — v0.34.0
+> Configuración de entorno de desarrollo multiplataforma — v0.35.0
 
 Instala y configura una stack de desarrollo completa con un solo comando. Soporta macOS y las principales distribuciones de Linux.
 

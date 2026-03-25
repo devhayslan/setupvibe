@@ -25,7 +25,7 @@ NC='\033[0m' # No Color
 
 
 # --- VERSION ---
-VERSION="0.34.0"
+VERSION="0.35.0"
 INSTALL_URL="https://server.setupvibe.dev"
 
 echo -e "${CYAN}SetupVibe Server Edition v${VERSION}${NC}"
