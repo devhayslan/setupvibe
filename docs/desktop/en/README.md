@@ -20,7 +20,7 @@ Installs and configures a complete developer stack in one command. Supports macO
 ## Installation
 
 ```bash
-curl -sL https://raw.githubusercontent.com/promovaweb/setupvibe/refs/heads/main/desktop.sh | bash
+curl -sSL desktop.setupvibe.dev | bash
 ```
 
 Or locally:

@@ -21,7 +21,7 @@ bash desktop.sh
 bash server.sh
 
 # Or via curl (canonical usage)
-curl -sL https://raw.githubusercontent.com/promovaweb/setupvibe/refs/heads/main/desktop.sh | bash
+curl -sSL desktop.setupvibe.dev | bash
 ```
 
 To test changes to a script, run it directly on a target machine or VM.

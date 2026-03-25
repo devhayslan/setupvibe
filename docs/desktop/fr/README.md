@@ -20,7 +20,7 @@ Installe et configure une stack de développement complète en une seule command
 ## Installation
 
 ```bash
-curl -sL https://raw.githubusercontent.com/promovaweb/setupvibe/refs/heads/main/desktop.sh | bash
+curl -sSL desktop.setupvibe.dev | bash
 ```
 
 Ou localement :

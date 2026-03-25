@@ -40,7 +40,7 @@ bash desktop.sh
 bash server.sh
 
 # Canonical usage (from README)
-curl -sL https://raw.githubusercontent.com/promovaweb/setupvibe/refs/heads/main/desktop.sh | bash
+curl -sSL desktop.setupvibe.dev | bash
 ```
 
 ### Testing Changes

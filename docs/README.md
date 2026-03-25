@@ -14,13 +14,13 @@ SetupVibe transforms any fresh machine into a fully configured development works
 ### Desktop (macOS & Linux)
 
 ```bash
-curl -sL https://raw.githubusercontent.com/promovaweb/setupvibe/refs/heads/main/desktop.sh | bash
+curl -sSL desktop.setupvibe.dev | bash
 ```
 
 ### Server (Linux only)
 
 ```bash
-curl -sL https://raw.githubusercontent.com/promovaweb/setupvibe/refs/heads/main/server.sh | bash
+curl -sSL server.setupvibe.dev | bash
 ```
 
 ## Edition Comparison

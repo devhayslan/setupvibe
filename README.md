@@ -27,13 +27,13 @@ Installs and configures a complete development stack in one command, supporting 
 ### Desktop (macOS & Linux)
 
 ```bash
-curl -sL https://raw.githubusercontent.com/promovaweb/setupvibe/refs/heads/main/desktop.sh | bash
+curl -sSL desktop.setupvibe.dev | bash
 ```
 
 ### Server (Linux only)
 
 ```bash
-curl -sL https://raw.githubusercontent.com/promovaweb/setupvibe/refs/heads/main/server.sh | bash
+curl -sSL server.setupvibe.dev | bash
 ```
 
 ---

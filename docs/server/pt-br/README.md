@@ -19,7 +19,7 @@ Um script de configuração enxuto e focado para servidores Linux. Sem Homebrew,
 ## Instalação
 
 ```bash
-curl -sL https://raw.githubusercontent.com/promovaweb/setupvibe/refs/heads/main/server.sh | bash
+curl -sSL server.setupvibe.dev | bash
 ```
 
 Ou localmente:

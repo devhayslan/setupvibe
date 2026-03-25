@@ -19,10 +19,10 @@ Un script de configuration léger et ciblé pour les serveurs Linux. Pas de Home
 ## Installation
 
 ```bash
-curl -sL https://raw.githubusercontent.com/promovaweb/setupvibe/refs/heads/main/server.sh | bash
+curl -sSL server.setupvibe.dev | bash
 ```
 
-Ou localmente :
+Ou localement :
 
 ```bash
 bash server.sh
