@@ -4,10 +4,10 @@
 
 SetupVibe transforms any fresh machine into a fully configured development workspace in one command. It supports two editions depending on your target:
 
-| Edition     | Script       | Platforms                                            | Guide                                             |
-| ----------- | ------------ | ---------------------------------------------------- | ------------------------------------------------- |
-| **Desktop** | `desktop.sh` | macOS 12+, Ubuntu 24.04+, Debian 12+, Zorin OS 18+   | [docs/desktop/en/README.md](desktop/en/README.md) |
-| **Server**  | `server.sh`  | Ubuntu 24.04+, Debian 12+, Zorin OS 18+ (Linux only) | [docs/server/en/README.md](server/en/README.md)   |
+| Edition     | Script       | Platforms                                            | Guides                                                                                                                             |
+| ----------- | ------------ | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **Desktop** | `desktop.sh` | macOS 12+, Ubuntu 24.04+, Debian 12+, Zorin OS 18+   | [EN](desktop/en/README.md) · [PT](desktop/pt-br/README.md) · [FR](desktop/fr/README.md) · [ES](desktop/es/README.md) |
+| **Server**  | `server.sh`  | Ubuntu 24.04+, Debian 12+, Zorin OS 18+ (Linux only) | [EN](server/en/README.md) · [PT](server/pt-br/README.md) · [FR](server/fr/README.md) · [ES](server/es/README.md)    |
 
 ## Quick Start
 
@@ -45,13 +45,25 @@ curl -sL https://raw.githubusercontent.com/promovaweb/setupvibe/refs/heads/main/
 | AI CLI tools                          | ✔              | ✔       |
 | PM2 auto-startup                      | ✔              | ✔       |
 
-## Further Reading
+## Specialized Guides
 
-- [Desktop Edition](desktop/en/README.md)
-- [Server Edition](server/en/README.md)
-- [Tmux Guide](desktop/en/tmux.md)
-- [PM2 Guide](desktop/en/pm2.md)
+### Tmux
+
+- [English](desktop/en/tmux.md)
+- [Portuguese](desktop/pt-br/tmux.md)
+- [French](desktop/fr/tmux.md)
+- [Spanish](desktop/es/tmux.md)
+
+### PM2
+
+- [English](desktop/en/pm2.md)
+- [Portuguese](desktop/pt-br/pm2.md)
+- [French](desktop/fr/pm2.md)
+- [Spanish](desktop/es/pm2.md)
 
 ---
 
 Maintained by [promovaweb.com](https://promovaweb.com) · Licensed under [GPL-3.0](../LICENSE)
+
+---
+> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

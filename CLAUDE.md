@@ -122,3 +122,6 @@ All `.md` files in this project must follow these rules:
 ```
 
 Use the `/markdown-format` skill to verify and apply these rules across all Markdown files.
+
+---
+> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

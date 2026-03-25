@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-`desktop.sh` and `server.sh` are the main entry points. `desktop.sh` targets macOS and Linux developer machines; `server.sh` targets Linux servers. Shared configuration templates live in `conf/` (`tmux.conf`, `zshrc-*.zsh`, `ecosystem.config.js`). User-facing documentation is under `docs/en/` and `docs/pt-BR/`. Keep changes localized: installer logic in the shell scripts, deployable templates in `conf/`, and explanatory material in `docs/`.
+`desktop.sh` and `server.sh` are the main entry points. `desktop.sh` targets macOS and Linux developer machines; `server.sh` targets Linux servers. Shared configuration templates live in `conf/` (`tmux.conf`, `zshrc-*.zsh`, `ecosystem.config.js`). User-facing documentation is under `docs/desktop/en/`, `docs/desktop/pt-br/`, `docs/desktop/fr/`, and `docs/desktop/es/`. Keep changes localized: installer logic in the shell scripts, deployable templates in `conf/`, and explanatory material in `docs/`.
 
 ## Build, Test, and Development Commands
 
@@ -51,3 +51,6 @@ All `.md` files in this project must follow these rules:
 ---
 > Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)
 ```
+
+---
+> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

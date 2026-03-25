@@ -4,6 +4,12 @@ Cross-platform setup for macOS and Linux desktops. Installs a complete developme
 
 ## Documentation
 
-| Language | Link                         |
-| -------- | ---------------------------- |
-| English  | [en/README.md](en/README.md) |
+| Language   | Link                         |
+| ---------- | ---------------------------- |
+| English    | [en/README.md](en/README.md) |
+| Portuguese | [pt-br/README.md](pt-br/README.md) |
+| French     | [fr/README.md](fr/README.md) |
+| Spanish    | [es/README.md](es/README.md) |
+
+---
+> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

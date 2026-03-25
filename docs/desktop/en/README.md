@@ -209,3 +209,6 @@ Each platform gets a dedicated `.zshrc`:
 Licensed under the **GNU General Public License v3.0** — see [LICENSE](../../LICENSE) for details.
 
 Maintained by [promovaweb.com](https://promovaweb.com) · <contact@promovaweb.com>
+
+---
+> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

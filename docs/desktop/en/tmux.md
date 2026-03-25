@@ -348,3 +348,6 @@ Highlights the status bar when the prefix key is active, in copy mode, or in syn
 | `prefix + \`     | *(pain-control split)*        | tmux-menus        | Menus moved to `prefix + g` — pain-control split preserved                 |
 | `prefix + M`     | `select-pane -M` (clear mark) | tmux-menus        | Menus moved to `prefix + g` — default preserved                            |
 | `prefix + Space` | `next-layout`                 | tmux-which-key    | which-key takes Space — next-layout still available via `prefix + Alt+1–5` |
+
+---
+> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

@@ -26,7 +26,7 @@ The project consists of two primary editions:
   - `tmux.conf`: Pre-configured tmux with TPM and modern defaults.
   - `zshrc-*.zsh`: Platform-specific ZSH configurations.
   - `ecosystem.config.js`: PM2 process management configuration.
-- `docs/`: Comprehensive documentation in English (`en/`) and Portuguese (`pt-BR/`).
+- `docs/`: Comprehensive documentation in English (`en/`), Portuguese (`pt-br/`), French (`fr/`), and Spanish (`es/`).
 
 ## Usage and Development
 
@@ -74,3 +74,6 @@ All `.md` files in this project must follow these rules:
 ---
 > Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)
 ```
+
+---
+> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

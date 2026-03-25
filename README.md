@@ -39,3 +39,6 @@ curl -sL https://raw.githubusercontent.com/promovaweb/setupvibe/refs/heads/main/
 ---
 
 Maintained by [promovaweb.com](https://promovaweb.com) · Licensed under [GPL-3.0](LICENSE)
+
+---
+> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)
