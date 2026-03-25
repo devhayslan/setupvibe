@@ -28,7 +28,16 @@ NC='\033[0m' # No Color
 VERSION="0.36.0"
 INSTALL_URL="https://server.setupvibe.dev"
 
+# --- ARGUMENT PARSING ---
+SWARM_MANAGER=false
+for arg in "$@"; do
+    case "$arg" in
+        --manager) SWARM_MANAGER=true ;;
+    esac
+done
+
 echo -e "${CYAN}SetupVibe Server Edition v${VERSION}${NC}"
+[[ "$SWARM_MANAGER" == "true" ]] && echo -e "${YELLOW}  → Docker Swarm Manager mode enabled${NC}"
 echo ""
 
 # --- ENVIRONMENT ---
@@ -122,6 +131,10 @@ STEPS=(
     "AI CLI Tools"
     "Finalization & Cleanup"
 )
+
+if [[ "$SWARM_MANAGER" == "true" ]]; then
+    STEPS+=("Docker Swarm Manager Setup")
+fi
 
 
 # Variable to track status
@@ -601,6 +614,62 @@ step_8() {
 }
 
 
+step_swarm() {
+    echo "Detecting public IP address..."
+    PUBLIC_IP=""
+    for service in \
+        "https://api.ipify.org" \
+        "https://ifconfig.me" \
+        "https://icanhazip.com" \
+        "https://checkip.amazonaws.com" \
+        "https://ipecho.net/plain"; do
+        PUBLIC_IP=$(curl -fsSL --max-time 10 "$service" 2>/dev/null | tr -d '[:space:]')
+        if [[ "$PUBLIC_IP" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo -e "${GREEN}✔ Public IP detected: $PUBLIC_IP (via $service)${NC}"
+            break
+        fi
+        PUBLIC_IP=""
+    done
+
+    if [[ -z "$PUBLIC_IP" ]]; then
+        echo -e "${RED}✘ Could not determine public IP address. Aborting Swarm setup.${NC}"
+        return 1
+    fi
+
+    echo "Initializing Docker Swarm (advertise address: $PUBLIC_IP)..."
+    if docker info 2>/dev/null | grep -q "Swarm: active"; then
+        echo -e "${YELLOW}⚠ Docker Swarm is already active — skipping init.${NC}"
+    else
+        if ! sys_do docker swarm init --advertise-addr "$PUBLIC_IP"; then
+            echo -e "${RED}✘ Docker Swarm init failed.${NC}"
+            return 1
+        fi
+        echo -e "${GREEN}✔ Docker Swarm initialized as manager node.${NC}"
+    fi
+
+    echo "Creating overlay network: network_swarm_public..."
+    if docker network ls --format '{{.Name}}' | grep -q "^network_swarm_public$"; then
+        echo -e "${YELLOW}⚠ Overlay network 'network_swarm_public' already exists — skipping.${NC}"
+    else
+        if ! sys_do docker network create \
+            --driver overlay \
+            --attachable \
+            network_swarm_public; then
+            echo -e "${RED}✘ Failed to create overlay network.${NC}"
+            return 1
+        fi
+        echo -e "${GREEN}✔ Overlay network 'network_swarm_public' created.${NC}"
+    fi
+
+    echo ""
+    echo -e "${CYAN}Docker Swarm join token (worker):${NC}"
+    sys_do docker swarm join-token worker
+    echo ""
+    echo -e "${CYAN}Docker Swarm join token (manager):${NC}"
+    sys_do docker swarm join-token manager
+}
+
+
 # --- MAIN EXECUTION ---
 
 
@@ -621,6 +690,34 @@ run_section 5 step_5
 run_section 6 step_6
 run_section 7 step_7
 run_section 8 step_8
+
+if [[ "$SWARM_MANAGER" == "true" ]]; then
+    run_section 9 step_swarm
+fi
+
+
+# --- DOCKER SWARM PROMPT (only if --manager was not passed) ---
+if [[ "$SWARM_MANAGER" == "false" ]]; then
+    echo ""
+    echo -e "${BLUE}========================================================${NC}"
+    echo -e "${BOLD}         DOCKER SWARM MANAGER SETUP (OPTIONAL)         ${NC}"
+    echo -e "${BLUE}========================================================${NC}"
+    echo -e "${YELLOW}Do you want to configure this machine as a Docker Swarm Manager?${NC}"
+    echo -e "  This will:"
+    echo -e "  - Detect the public IP of this server"
+    echo -e "  - Initialize Docker Swarm (${CYAN}docker swarm init${NC})"
+    echo -e "  - Create overlay network ${CYAN}network_swarm_public${NC}"
+    echo ""
+    echo -ne "${BOLD}Configure as Swarm Manager? [y/N]: ${NC}"
+    read -r SWARM_ANSWER < /dev/tty
+    if [[ "$SWARM_ANSWER" =~ ^[yYsS]$ ]]; then
+        SWARM_MANAGER=true
+        STEPS+=("Docker Swarm Manager Setup")
+        run_section 9 step_swarm
+    else
+        echo -e "${YELLOW}Skipping Docker Swarm setup.${NC}"
+    fi
+fi
 
 
 # --- FINALIZATION ---

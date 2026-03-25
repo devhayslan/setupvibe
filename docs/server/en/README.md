@@ -28,13 +28,23 @@ Or locally:
 bash server.sh
 ```
 
-The script waits for any running APT lock to clear (useful on fresh cloud VMs where `unattended-upgrades` runs at boot), shows an interactive roadmap, then asks for confirmation. It also prompts to configure Git identity if not already set.
+To initialize Docker Swarm automatically after setup, pass `--manager`:
+
+```bash
+curl -sSL server.setupvibe.dev | bash -s -- --manager
+```
+
+```bash
+bash server.sh --manager
+```
+
+The script waits for any running APT lock to clear (useful on fresh cloud VMs where `unattended-upgrades` runs at boot), shows an interactive roadmap, then asks for confirmation. It also prompts to configure Git identity if not already set. At the end of installation, if `--manager` was not passed, the script will interactively ask whether to configure the machine as a Docker Swarm Manager.
 
 ---
 
 ## What Gets Installed
 
-**9 steps, fully automated.**
+**9 steps fully automated, plus an optional Step 9 for Docker Swarm Manager setup.**
 
 ### Step 1 — Base System & Build Tools
 
@@ -133,6 +143,15 @@ npm global packages are installed to `~/.npm-global` (configured with `npm confi
 - Removes temp files: `/tmp/ctop`, `/tmp/starship`
 - Vacuums journal logs older than 7 days
 - Clears user caches: `~/.cache/pip`, `~/.npm/_npx`, `~/.bundle/cache`, `~/.cache/composer`
+
+### Step 9 — Docker Swarm Manager (optional)
+
+Activated by passing `--manager` or by answering **yes** to the interactive prompt shown at the end of setup.
+
+1. **Detects the public IP** of the server by querying external services (`api.ipify.org`, `ifconfig.me`, `icanhazip.com`, `checkip.amazonaws.com`, `ipecho.net/plain`) in sequence until a valid IPv4 is returned.
+2. **Initializes Docker Swarm** with `docker swarm init --advertise-addr <PUBLIC_IP>`. Idempotent — skips if Swarm is already active.
+3. **Creates the overlay network** `network_swarm_public` with `--driver overlay --attachable`. Idempotent — skips if the network already exists.
+4. **Displays join tokens** for both worker and manager roles so additional nodes can be joined immediately.
 
 ---
 

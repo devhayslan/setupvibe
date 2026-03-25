@@ -1,6 +1,6 @@
 # SetupVibe
 
-> The ultimate cross-platform development environment setup script — v0.34.0
+> The ultimate cross-platform development environment setup script — v0.36.0
 
 Installs and configures a complete development stack in one command, supporting macOS and major Linux distributions.
 
@@ -34,6 +34,12 @@ curl -sSL desktop.setupvibe.dev | bash
 
 ```bash
 curl -sSL server.setupvibe.dev | bash
+```
+
+To initialize Docker Swarm automatically after setup:
+
+```bash
+curl -sSL server.setupvibe.dev | bash -s -- --manager
 ```
 
 ---

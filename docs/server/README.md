@@ -1,6 +1,6 @@
 # SetupVibe — Server Edition
 
-Lean Linux-only setup for production servers. No Homebrew, no language ecosystems. Installs Docker, Ansible, GitHub CLI, networking tools, Tailscale, SSH, shell, tmux, and AI CLI tools via NodeSource Node.js.
+Lean Linux-only setup for production servers. No Homebrew, no language ecosystems. Installs Docker, Ansible, GitHub CLI, networking tools, Tailscale, SSH, shell, tmux, and AI CLI tools via NodeSource Node.js. Optionally configures the machine as a Docker Swarm Manager node via the `--manager` flag.
 
 ## Documentation
 

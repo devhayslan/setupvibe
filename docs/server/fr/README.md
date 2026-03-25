@@ -28,13 +28,23 @@ Ou localement :
 bash server.sh
 ```
 
-Le script attend que tout verrou APT en cours soit libéré (utile sur les VMs cloud neuves où `unattended-upgrades` s'exécute au boot), affiche une feuille de route interactive, puis demande confirmation. Il propose également de configurer l'identité Git si elle n'est pas déjà définie.
+Pour initialiser Docker Swarm automatiquement après le setup, passez `--manager` :
+
+```bash
+curl -sSL server.setupvibe.dev | bash -s -- --manager
+```
+
+```bash
+bash server.sh --manager
+```
+
+Le script attend que tout verrou APT en cours soit libéré (utile sur les VMs cloud neuves où `unattended-upgrades` s'exécute au boot), affiche une feuille de route interactive, puis demande confirmation. Il propose également de configurer l'identité Git si elle n'est pas déjà définie. À la fin de l'installation, si `--manager` n'a pas été passé, le script demandera interactivement si la machine doit être configurée comme Manager Docker Swarm.
 
 ---
 
 ## Ce qui est installé
 
-**9 étapes, entièrement automatisées.**
+**9 étapes entièrement automatisées, plus une Étape 9 optionnelle pour la configuration du Docker Swarm Manager.**
 
 ### Étape 1 — Système de base et outils de compilation
 
@@ -133,6 +143,15 @@ Les paquets globaux npm sont installés dans `~/.npm-global` (configuré avec `n
 - Supprime les fichiers temporaires : `/tmp/ctop`, `/tmp/starship`
 - Nettoie les journaux journalctl de plus de 7 jours
 - Efface les caches utilisateur : `~/.cache/pip`, `~/.npm/_npx`, `~/.bundle/cache`, `~/.cache/composer`
+
+### Étape 9 — Docker Swarm Manager (optionnel)
+
+Activé en passant `--manager` ou en répondant **oui** au prompt interactif affiché en fin de setup.
+
+1. **Détecte l'IP publique** du serveur en interrogeant des services externes (`api.ipify.org`, `ifconfig.me`, `icanhazip.com`, `checkip.amazonaws.com`, `ipecho.net/plain`) en séquence jusqu'à obtenir un IPv4 valide.
+2. **Initialise Docker Swarm** avec `docker swarm init --advertise-addr <IP_PUBLIQUE>`. Idempotent — ignoré si Swarm est déjà actif.
+3. **Crée le réseau overlay** `network_swarm_public` avec `--driver overlay --attachable`. Idempotent — ignoré si le réseau existe déjà.
+4. **Affiche les tokens de rejoindre** pour les rôles worker et manager, permettant d'ajouter de nouveaux nœuds immédiatement.
 
 ---
 

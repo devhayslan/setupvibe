@@ -23,6 +23,12 @@ curl -sSL desktop.setupvibe.dev | bash
 curl -sSL server.setupvibe.dev | bash
 ```
 
+To initialize Docker Swarm automatically after setup:
+
+```bash
+curl -sSL server.setupvibe.dev | bash -s -- --manager
+```
+
 ## Edition Comparison
 
 | Feature                               | Desktop        | Server  |
@@ -44,6 +50,7 @@ curl -sSL server.setupvibe.dev | bash
 | Tmux + TPM plugins                    | ✔              | ✔       |
 | AI CLI tools                          | ✔              | ✔       |
 | PM2 auto-startup                      | ✔              | ✗       |
+| Docker Swarm Manager (`--manager`)    | ✗              | ✔       |
 
 ## Specialized Guides
 
