@@ -23,7 +23,8 @@ The project consists of two primary editions:
 - `desktop.sh`: The main entry point for desktop environment setup.
 - `server.sh`: The entry point for server environment setup.
 - `conf/`: Configuration templates.
-  - `tmux.conf`: Pre-configured tmux with TPM and modern defaults.
+  - `tmux-desktop.conf`: Tmux config for desktop environments (TPM, plugins, onedark theme).
+  - `tmux-server.conf`: Lean tmux config for server environments.
   - `zshrc-*.zsh`: Platform-specific ZSH configurations.
   - `ecosystem.config.js`: PM2 process management configuration.
 - `docs/`: Comprehensive documentation in English (`en/`), Portuguese (`pt-br/`), French (`fr/`), and Spanish (`es/`).

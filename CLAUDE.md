@@ -74,7 +74,8 @@ Configuration files deployed by the scripts to the user's home directory:
 
 | File                  | Deployed to                | Purpose                                                                       |
 | --------------------- | -------------------------- | ----------------------------------------------------------------------------- |
-| `tmux.conf`           | `~/.tmux.conf`             | Tmux with TPM; 20+ plugins, onedark theme, mouse support, session persistence |
+| `tmux-desktop.conf`   | `~/.tmux.conf` (desktop)   | Tmux with TPM; 20+ plugins, onedark theme, mouse support, session persistence |
+| `tmux-server.conf`    | `~/.tmux.conf` (server)    | Lean tmux config for server environments                                      |
 | `zshrc-macos.zsh`     | `~/.zshrc` (macOS)         | Homebrew, Cargo, Composer, Go, Bun, rbenv paths                               |
 | `zshrc-linux.zsh`     | `~/.zshrc` (Linux desktop) | Linuxbrew paths, NPM, system aliases                                          |
 | `zshrc-server.zsh`    | `~/.zshrc` (server)        | Server-specific shell config                                                  |
