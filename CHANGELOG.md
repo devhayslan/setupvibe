@@ -1,0 +1,176 @@
+# Changelog
+
+All notable changes to **SetupVibe** are documented in this file.
+
+Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+
+---
+
+## [v0.37.0] - 2026-03-27
+
+### Added
+
+- New `gemini` and `claude` shell aliases in all zsh configuration files (`zshrc-macos.zsh`, `zshrc-linux.zsh`, `zshrc-server.zsh`)
+- README updated to document the new AI CLI aliases
+
+### Changed
+
+- Tmux configuration files for desktop and server environments fully revised
+- Legacy `tmux.conf` removed in favor of `tmux-desktop.conf` and `tmux-server.conf`
+
+---
+
+## [v0.36.0] - 2026-03-25
+
+### Added
+
+- Docker Swarm Manager setup option in `desktop.sh`
+- `zoxide` installation added to `server.sh` for smarter directory navigation
+- Documentation updated for Docker Swarm Manager usage
+
+### Fixed
+
+- Contact email corrected from `contact@promovaweb.com` to `contato@promovaweb.com` across all files
+
+---
+
+## [v0.35.0] - 2026-03-25
+
+### Added
+
+- Dedicated tmux configuration files for desktop (`tmux-desktop.conf`) and server (`tmux-server.conf`) editions in `conf/`
+- `tmux-desktop.conf` ships with 20+ plugins, onedark theme, mouse support, and session persistence
+- Server tmux configuration tailored for lean server environments
+
+### Fixed
+
+- Installation URLs updated across documentation and scripts to use the new `setupvibe.dev` domain
+
+### Docs
+
+- PM2 guide section titles and table formatting improved
+- README tables reformatted for clarity
+- PM2 installation removed from setup script; documentation updated accordingly
+- Tmux guide added in Portuguese (`docs/desktop/pt/tmux.md`)
+- Server edition documentation added in both English and Portuguese
+- `GEMINI.md` added with Gemini CLI instructions and project context
+- Markdown formatting guidelines added to `CLAUDE.md`, `GEMINI.md`, and `AGENTS.md`
+- Markdown tables standardized across README and PM2 docs
+
+### Changed
+
+- `server.sh`: Homebrew installation steps removed; Node.js installation clarified via NodeSource APT
+- `server.sh` steps renumbered and reorganized after Homebrew removal
+
+---
+
+## [v0.34.0] - 2026-03-21
+
+### Added
+
+- n8n installation included in `desktop.sh` AI CLI Tools step
+- PM2 `ecosystem.config.js` configuration file added to `conf/` and downloaded by setup scripts
+- Base tmux settings for window and pane management added to configuration
+- Homebrew upgrade step added to both `desktop.sh` and `server.sh`
+
+### Changed
+
+- `server.sh` refactored to use helper functions for user and system commands
+- Enhanced Linux distribution detection for PHP and Docker configurations (Ubuntu 24.04, Debian 12, Zorin OS 18)
+- APT keyring management streamlined; legacy entries cleaned before re-adding
+- Base tools installation improved with better GPG key handling and non-interactive updates
+- GPG detection enhanced; compatibility with both `gpg` and `gpg2` commands ensured
+- README updated with new features and improvements summary
+
+---
+
+## [v0.33.0] - 2026-03-18
+
+### Fixed
+
+- Homebrew installation process hardened with proper permission handling and temporary sudoers rule cleanup
+- GPG handling improved across both scripts for compatibility in varied environments
+
+---
+
+## [v0.32.1] - 2026-03-18
+
+### Fixed
+
+- Environment variable export corrected in setup scripts
+- Base tools installation ensured to run before dependent steps
+
+---
+
+## [v0.32.0] - 2026-03-18
+
+### Added
+
+- Comprehensive PM2 guide documentation (`docs/desktop/en/pm2.md`) covering commands, configuration, and log management
+- PM2 configuration enhanced in setup scripts with ecosystem file support
+
+### Changed
+
+- Tmux keybindings revised to avoid conflicts and improve usability
+- Tmux configuration documentation and keybinding reference updated
+
+---
+
+## [v0.31.0] - 2026-03-18
+
+### Added
+
+- Tmux Plugin Manager (TPM) installation added to both `desktop.sh` and `server.sh`
+- `jaclu/tmux-menus` plugin added to tmux configuration
+- AI CLI Tools installation step added to both scripts (Claude Code, Gemini CLI, etc.)
+- `sshpass` added to installation scripts for both desktop and server setups
+- Root user support for tmux configuration installation
+
+### Fixed
+
+- macOS: script now blocks execution as root and provides correct usage instructions
+- Cleanup procedures improved for both macOS and Linux server scripts
+- Documentation generation suppressed for gem installs in Rails setup
+- Bruno installation command improved with graceful error handling
+- Homebrew environment loading corrected to use `sudo` for user context
+- APT keyring cleanup and user detection improved across scripts
+- APT lock handling enhanced (important for cloud VMs with unattended-upgrades at boot)
+- ZSH configuration files deployment added via safe download function
+
+---
+
+## [v0.30.0] - 2026-03-18
+
+### Changed
+
+- Server setup steps updated to include Tmux and plugins as a dedicated step
+- `server.sh` step `step_9` renamed to `step_10`; `run_section` calls updated accordingly
+- README installation steps updated to reflect finalization and cleanup step
+
+---
+
+## [v0.29.1] - 2026-03-18
+
+### Fixed
+
+- User detection improved for Homebrew commands in both scripts (`SUDO_USER` vs `whoami`)
+- APT keyring cleanup logic improved and user detection made more robust
+- APT lock polling added before running apt commands (needed for cloud VMs)
+
+---
+
+## [v0.1.0] - 2026-02-22
+
+### Added
+
+- Initial `desktop.sh` for macOS and Linux desktop environments
+- Initial `server.sh` for lean Linux server environments
+- Support for `x86_64` and `arm64/aarch64` architectures
+- Docker and Docker Compose installation
+- Sudoers handling for non-interactive privilege escalation
+- i18n groundwork for multi-language documentation
+- Initial README documentation
+
+---
+
+> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)
