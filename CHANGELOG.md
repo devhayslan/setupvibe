@@ -6,6 +6,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [v0.38.0] - 2026-03-29
+
+### Added
+
+- `CHANGELOG.md` introduced to track all notable changes across releases
+
+---
+
 ## [v0.37.0] - 2026-03-27
 
 ### Added
