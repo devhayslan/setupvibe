@@ -25,8 +25,8 @@ module.exports = {
     },
     {
       name: "agentlytics",
-      script: "agentlytics",
-      args: "start",
+      script: "npx",
+      args: "agentlytics",
       instances: 1,
       exec_mode: "fork",
       watch: false,
