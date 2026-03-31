@@ -1,6 +1,6 @@
 # SetupVibe — Desktop Edition
 
-> Cross-platform development environment setup — v0.39.0
+> Cross-platform development environment setup — v0.40.0
 
 Installs and configures a complete developer stack in one command. Supports macOS and major Linux distributions.
 
@@ -39,13 +39,13 @@ The script shows an interactive roadmap and asks for confirmation before startin
 
 ### Step 1 — Base System & Build Tools
 
-**Linux:** installs via APT — `build-essential`, `git`, `wget`, `unzip`, `curl`, `tmux`, SSL/compression libs, and the Charmbracelet APT repo (for `glow`).
+**Linux:** installs via APT — `build-essential`, `git`, `wget`, `unzip`, `curl`, `tmux`, `ffmpeg`, `imagemagick`, SSL/compression libs, and the Charmbracelet APT repo (for `glow`).
 
 **macOS:** relies on Xcode Command Line Tools (checks and exits if not present). Base tools are installed via Homebrew in the next step.
 
 ### Step 2 — Homebrew
 
-- **macOS:** installs Homebrew if absent, then installs base tools (`wget`, `curl`, `tmux`, `openssl`, `readline`, etc.)
+- **macOS:** installs Homebrew if absent, then installs base tools (`wget`, `curl`, `tmux`, `ffmpeg`, `imagemagick`, `openssl`, `readline`, etc.)
 - **Linux:** installs Linuxbrew under `/home/linuxbrew/.linuxbrew`; adds PATH entries to `~/.bashrc`, `~/.profile`, `~/.zshrc`; runs `brew upgrade` if already present
 
 ### Step 3 — PHP 8.4 Ecosystem

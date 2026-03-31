@@ -24,7 +24,7 @@ NC='\033[0m' # No Color
 
 
 # --- VERSION ---
-VERSION="0.39.0"
+VERSION="0.40.0"
 INSTALL_URL="https://desktop.setupvibe.dev"
 
 echo -e "${CYAN}SetupVibe Desktop v${VERSION}${NC}"
@@ -435,7 +435,7 @@ step_1() {
         sys_do apt-get install -y build-essential git wget unzip fontconfig curl sshpass \
             libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm \
             libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
-            libyaml-dev autoconf bison procps file tmux
+            libyaml-dev autoconf bison procps file tmux ffmpeg imagemagick
 
         # Adding Charmbracelet Repo (needed for Glow)
         install_key "https://repo.charm.sh/apt/gpg.key" "/etc/apt/keyrings/charm.gpg"
@@ -466,7 +466,7 @@ step_2() {
             brew_cmd upgrade
             
             echo "Installing base tools via Homebrew..."
-            brew_cmd install wget unzip curl tmux sshpass openssl readline sqlite3 xz zlib tcl-tk
+            brew_cmd install wget unzip curl tmux sshpass openssl readline sqlite3 xz zlib tcl-tk ffmpeg imagemagick
         else
             echo -e "${RED}✘ Homebrew installation failed.${NC}"
             return 1
@@ -820,7 +820,7 @@ step_7() {
 
 step_8() {
     echo "Installing Modern Unix Tools via Homebrew..."
-    TOOLS="bat eza zoxide fzf ripgrep fd lazygit lazydocker neovim glow jq tldr fastfetch duf jq mise"
+    TOOLS="bat eza zoxide fzf ripgrep fd lazygit lazydocker neovim glow tldr fastfetch duf jq mise"
 
     if $IS_MACOS; then
         brew_cmd install $TOOLS

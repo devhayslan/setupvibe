@@ -6,6 +6,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [v0.40.0] - 2026-03-31
+
+### Added
+
+- `ffmpeg` and `imagemagick` added to Desktop Edition (macOS via Homebrew, Linux via APT)
+- Documentation updated to reflect the new media tools
+
+### Fixed
+
+- Duplicate `jq` package removed from `step_8` in `desktop.sh`
+
+---
+
 ## [v0.39.0] - 2026-03-31
 
 ### Added

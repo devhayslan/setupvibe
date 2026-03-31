@@ -1,6 +1,6 @@
 # SetupVibe — Édition Bureau
 
-> Configuration d'environnement de développement multiplateforme — v0.39.0
+> Configuration de l'environnement de développement multiplateforme — v0.40.0
 
 Installe et configure un stack complet de développeur en une seule commande. Supporte macOS et les principales distributions Linux.
 
@@ -37,15 +37,15 @@ Le script affiche une feuille de route interactive et demande confirmation avant
 
 **14 étapes, entièrement automatisées.**
 
-### Étape 1 — Système de base et outils de compilation
+### Étape 1 — Système de Base et Outils de Build
 
-**Linux :** installation via APT — `build-essential`, `git`, `wget`, `unzip`, `curl`, `tmux`, bibliothèques SSL/compression, et le dépôt APT Charmbracelet (pour `glow`).
+**Linux :** installation via APT — `build-essential`, `git`, `wget`, `unzip`, `curl`, `tmux`, `ffmpeg`, `imagemagick`, bibliothèques SSL/compression et le dépôt APT Charmbracelet (pour `glow`).
 
-**macOS :** s'appuie sur les outils de ligne de commande Xcode (vérifie et quitte s'ils sont absents). Les outils de base sont installés via Homebrew à l'étape suivante.
+**macOS :** repose sur les Xcode Command Line Tools (vérifie et quitte s'ils sont absents). Les outils de base sont installés via Homebrew à l'étape suivante.
 
 ### Étape 2 — Homebrew
 
-- **macOS :** installe Homebrew s'il est absent, puis installe les outils de base (`wget`, `curl`, `tmux`, `openssl`, `readline`, etc.)
+- **macOS :** installe Homebrew s'il est absent, puis installe les outils de base (`wget`, `curl`, `tmux`, `ffmpeg`, `imagemagick`, `openssl`, `readline`, etc.)
 - **Linux :** installe Linuxbrew sous `/home/linuxbrew/.linuxbrew` ; ajoute les entrées PATH à `~/.bashrc`, `~/.profile`, `~/.zshrc` ; exécute `brew upgrade` s'il est déjà présent
 
 ### Étape 3 — Écosystème PHP 8.4
