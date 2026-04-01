@@ -738,6 +738,32 @@ Esta é a lista exaustiva de todos os aliases configurados pelo SetupVibe em tod
   - Descrição: Executa comando em serviço.
   - Exemplo: `dcexec app bash`
 
+## Portainer
+
+- **`portainer-start`**
+  - Disponibilidade: 🌐 Ambos
+  - Comando: `docker compose -f ~/.setupvibe/portainer-compose.yml up -d`
+  - Descrição: Inicia o container do Portainer.
+  - Exemplo: `portainer-start`
+
+- **`portainer-stop`**
+  - Disponibilidade: 🌐 Ambos
+  - Comando: `docker compose -f ~/.setupvibe/portainer-compose.yml stop`
+  - Descrição: Para o container do Portainer.
+  - Exemplo: `portainer-stop`
+
+- **`portainer-restart`**
+  - Disponibilidade: 🌐 Ambos
+  - Comando: `docker compose -f ~/.setupvibe/portainer-compose.yml restart`
+  - Descrição: Reinicia o container do Portainer.
+  - Exemplo: `portainer-restart`
+
+- **`portainer-update`**
+  - Disponibilidade: 🌐 Ambos
+  - Comando: `docker compose -f ~/.setupvibe/portainer-compose.yml pull && docker compose -f ~/.setupvibe/portainer-compose.yml up -d`
+  - Descrição: Atualiza a imagem e reinicia o Portainer.
+  - Exemplo: `portainer-update`
+
 ## Gerenciadores de Pacotes
 
 - **`update`**

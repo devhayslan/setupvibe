@@ -734,10 +734,36 @@ This is the exhaustive list of all aliases configured by SetupVibe on all platfo
 - **`dcexec`**
   - Availability: 🌐 Both
   - Command: `docker compose exec`
-  - Description: Executes a command in a service.
+  - Description: Runs command in a service.
   - Example: `dcexec app bash`
 
-## Package Managers
+  ## Portainer
+
+  - **`portainer-start`**
+  - Availability: 🌐 Both
+  - Command: `docker compose -f ~/.setupvibe/portainer-compose.yml up -d`
+  - Description: Starts the Portainer container.
+  - Example: `portainer-start`
+
+  - **`portainer-stop`**
+  - Availability: 🌐 Both
+  - Command: `docker compose -f ~/.setupvibe/portainer-compose.yml stop`
+  - Description: Stops the Portainer container.
+  - Example: `portainer-stop`
+
+  - **`portainer-restart`**
+  - Availability: 🌐 Both
+  - Command: `docker compose -f ~/.setupvibe/portainer-compose.yml restart`
+  - Description: Restarts the Portainer container.
+  - Example: `portainer-restart`
+
+  - **`portainer-update`**
+  - Availability: 🌐 Both
+  - Command: `docker compose -f ~/.setupvibe/portainer-compose.yml pull && docker compose -f ~/.setupvibe/portainer-compose.yml up -d`
+  - Description: Updates the Portainer image and restarts it.
+  - Example: `portainer-update`
+
+  ## Package Managers
 
 - **`update`**
   - Availability: 🌐 Both
