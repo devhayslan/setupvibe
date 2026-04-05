@@ -160,5 +160,3 @@ Use `/speckit.implement` ou trabalhe tarefa por tarefa com seu agente de IA, ref
 - Execute `spup` periodicamente para se manter na versão mais recente do Spec-Kit.
 
 ---
-
-> Siga o guia de formatação: [Markdown Format Guide](.claude/commands/markdown-format.md)

@@ -51,4 +51,3 @@ Cronboard permet de gérer des serveurs via SSH. Vous pouvez configurer des conn
 Pour plus de détails sur les paramètres avancés, visitez la [documentation officielle](https://antoniorodr.github.io/cronboard/configuration/).
 
 ---
-> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

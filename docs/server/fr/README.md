@@ -160,6 +160,10 @@ Activé en passant `--manager` ou en répondant **oui** au prompt interactif aff
 3. **Crée le réseau overlay** `network_swarm_public` avec `--driver overlay --attachable`. Idempotent — ignoré si le réseau existe déjà.
 4. **Affiche les tokens de rejoindre** pour les rôles worker et manager, permettant d'ajouter de nouveaux nœuds immédiatement.
 
+## Contribution
+
+Toutes les contributions de toutes tailles sont les bienvenues ! Veuillez lire notre [Guide de Contribution](../../../CONTRIBUTING.md) pour commencer.
+
 ---
 
 ## Licence
@@ -169,4 +173,3 @@ Sous licence **GNU General Public License v3.0** — voir [LICENSE](../../LICENS
 Maintenu par [promovaweb.com](https://promovaweb.com) · <contato@promovaweb.com>
 
 ---
-> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

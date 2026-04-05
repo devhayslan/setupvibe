@@ -360,4 +360,3 @@ Resalta la barra de estado cuando la tecla prefijo está activa, en modo copia o
 | `prefix + Space` | `next-layout`                 | tmux-which-key    | which-key toma Space; next-layout disponible vía `prefix + Alt+1–5`         |
 
 ---
-> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

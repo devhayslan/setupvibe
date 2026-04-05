@@ -159,6 +159,10 @@ Activated by passing `--manager` or by answering **yes** to the interactive prom
 3. **Creates the overlay network** `network_swarm_public` with `--driver overlay --attachable`. Idempotent — skips if the network already exists.
 4. **Displays join tokens** for both worker and manager roles so additional nodes can be joined immediately.
 
+## Contributing
+
+We welcome contributions of all sizes! Please read our [Contribution Guide](../../../CONTRIBUTING.md) to get started.
+
 ---
 
 ## License
@@ -168,4 +172,3 @@ Licensed under the **GNU General Public License v3.0** — see [LICENSE](../../L
 Maintained by [promovaweb.com](https://promovaweb.com) · <contato@promovaweb.com>
 
 ---
-> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

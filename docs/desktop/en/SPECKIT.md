@@ -161,4 +161,3 @@ Use `/speckit.implement` or work task by task with your AI agent, referencing th
 
 ---
 
-> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

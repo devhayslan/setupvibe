@@ -75,9 +75,12 @@ curl -sSL server.setupvibe.dev | bash -s -- --manager
 - [French](desktop/fr/cronboard.md)
 - [Spanish](desktop/es/cronboard.md)
 
+## Contributing
+
+We welcome contributions of all sizes! Please read our [Contribution Guide](../CONTRIBUTING.md) to get started.
+
 ---
 
 Maintained by [promovaweb.com](https://promovaweb.com) · Licensed under [GPL-3.0](../LICENSE)
 
 ---
-> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

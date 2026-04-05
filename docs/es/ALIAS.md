@@ -1680,4 +1680,3 @@ Esta é a lista exaustiva de todos os aliases configurados pelo SetupVibe em tod
   - Ejemplo: `dotenv`
 
 ---
-> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

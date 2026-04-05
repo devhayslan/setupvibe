@@ -210,6 +210,10 @@ Each platform gets a dedicated `.zshrc`:
 
 `git rsync cp extract zoxide fzf zsh-autosuggestions zsh-syntax-highlighting brew gh ansible docker docker-compose laravel composer rails ruby python pip node npm bun golang rust` + `macos` (macOS only) / `nmap tmux` (Linux only)
 
+## Contributing
+
+We welcome contributions of all sizes! Please read our [Contribution Guide](../../../CONTRIBUTING.md) to get started.
+
 ---
 
 ## License
@@ -219,4 +223,3 @@ Licensed under the **GNU General Public License v3.0** — see [LICENSE](../../L
 Maintained by [promovaweb.com](https://promovaweb.com) · <contato@promovaweb.com>
 
 ---
-> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

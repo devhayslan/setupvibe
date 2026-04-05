@@ -13,5 +13,8 @@ Lean Linux-only setup for production servers. No Homebrew, no language ecosystem
 | French     | [fr/README.md](fr/README.md) |
 | Spanish    | [es/README.md](es/README.md) |
 
+## Contributing
+
+We welcome contributions of all sizes! Please read our [Contribution Guide](../CONTRIBUTING.md) to get started.
+
 ---
-> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

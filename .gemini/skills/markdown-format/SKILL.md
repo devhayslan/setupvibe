@@ -20,12 +20,6 @@ Every Markdown file in this project **MUST** strictly adhere to these rules. Any
 5. **Lists** — use hyphens `-` for unordered items and numbers `1.` for ordered lists.
 6. **Blank lines** — exactly **one blank line** before and after headings, code blocks, tables, and lists.
 7. **No inline HTML** — do not use `<br>`, `<b>`, `<i>`, or any other HTML tags. Use Markdown equivalents.
-8. **Footer link** — every `.md` file MUST end exactly with this footer:
-
-```markdown
----
-
-```
 
 ## How to Apply (Formatter)
 
@@ -34,8 +28,7 @@ When formatting a file:
 1. **Surgical Alignment:** Fix pipe alignment in tables to ensure they are readable in raw format.
 2. **Spacing Fix:** Ensure exactly one empty line between blocks. Remove trailing spaces.
 3. **Language Detection:** If a code block lacks a language, detect it based on context (bash, zsh, js, json, etc.).
-4. **Footer Insertion:** Append the mandatory footer if it's missing or incorrect.
-5. **Standardization:** Convert any non-standard list markers (like `*` or `+`) to `-`.
+4. **Standardization:** Convert any non-standard list markers (like `*` or `+`) to `-`.
 
 ## Invocation
 

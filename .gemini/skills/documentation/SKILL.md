@@ -13,7 +13,7 @@ Ao criar ou editar QUALQUER arquivo `.md`, você DEVE invocar a skill **`markdow
 
 1.  **Cabeçalho Padrão:** Começar com H1 seguido de blockquote com a versão. Ex: `> Descrição curta — v0.41.6`.
 2.  **Linting Delegado:** Todas as regras de títulos, tabelas, code blocks, links, listas e espaçamentos são gerenciadas pela skill `markdown-format`. **Não ignore seus avisos**.
-3.  **Rodapé:** O rodapé padrão é obrigatório e será validado/inserido pela skill de formatação.
+3.  **Linting Final:** Após criar ou editar o arquivo, processe-o com a skill `markdown-format` para validar conformidade.
 
 ## 🔄 Fase 2: Sincronização de Passos (Steps)
 

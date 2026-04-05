@@ -281,4 +281,3 @@ All notable changes to **SetupVibe** are documented in this file.
 
 ---
 
-> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

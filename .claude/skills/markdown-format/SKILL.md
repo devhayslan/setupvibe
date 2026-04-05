@@ -20,12 +20,6 @@ Every Markdown file in this project must follow these rules:
 5. **Lists** — hyphens `-` for unordered items; numbers for ordered lists.
 6. **Blank lines** — one blank line before and after headings, code blocks, and tables.
 7. **No inline HTML** — do not use `<br>`, `<b>`, `<i>` or other tags inside Markdown.
-8. **Footer link** — every `.md` file must end with this footer:
-
-```markdown
----
-
-```
 
 ## How to Apply
 
@@ -33,8 +27,7 @@ For each `.md` file modified or created:
 
 1. Verify all rules above are respected.
 2. Fix spacing, table alignment, and code blocks missing a language specifier.
-3. Add the footer link if absent.
-4. Never remove content; format only.
+3. Never remove content; format only.
 
 ## Common Targets
 

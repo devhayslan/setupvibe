@@ -160,6 +160,10 @@ Se activa pasando `--manager` o respondiendo **sí** al prompt interactivo que s
 3. **Crea la red overlay** `network_swarm_public` con `--driver overlay --attachable`. Idempotente — omite si la red ya existe.
 4. **Muestra los tokens de unión** para los roles worker y manager, permitiendo agregar nuevos nodos de inmediato.
 
+## Contribución
+
+¡Todas as contribuições de todos os tamanhos são bem-vindas! Por favor, leia nosso [Guia de Contribuição](../../../CONTRIBUTING.md) para começar.
+
 ---
 
 ## Licencia
@@ -169,4 +173,3 @@ Bajo la licencia **GNU General Public License v3.0** — ver [LICENSE](../../LIC
 Mantenido por [promovaweb.com](https://promovaweb.com) · <contato@promovaweb.com>
 
 ---
-> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

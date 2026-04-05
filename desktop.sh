@@ -6,6 +6,7 @@
 # ==============================================================================
 # Maintainer:    promovaweb.com
 # Contact:       contato@promovaweb.com
+# Contributing:  https://github.com/promovaweb/setupvibe/blob/main/CONTRIBUTING.md
 # ------------------------------------------------------------------------------
 # Compatibility: macOS 12+, Zorin OS 18+, Ubuntu 24.04+, Debian 12+
 # Architectures: x86_64 (amd64) & ARM64 (aarch64/arm64)

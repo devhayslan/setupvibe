@@ -77,12 +77,5 @@ All `.md` files in this project must follow these rules:
 5. **Lists** — hyphens `-` for unordered items; numbers for ordered lists.
 6. **Blank lines** — one blank line before and after headings, code blocks, and tables.
 7. **No inline HTML** — do not use `<br>`, `<b>`, `<i>` or other tags inside Markdown.
-8. **Footer link** — every `.md` file must end with a formatting reference footer:
-
-```markdown
----
-> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)
-```
 
 ---
-> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)

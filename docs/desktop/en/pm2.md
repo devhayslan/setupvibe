@@ -264,4 +264,3 @@ pm2 unstartup
 ```
 
 ---
-> Follow the formatting guide: [Markdown Format Guide](.claude/commands/markdown-format.md)
