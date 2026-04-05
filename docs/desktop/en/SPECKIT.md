@@ -160,4 +160,3 @@ Use `/speckit.implement` or work task by task with your AI agent, referencing th
 - Run `spup` periodically to stay on the latest version of Spec-Kit.
 
 ---
-

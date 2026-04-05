@@ -94,7 +94,6 @@ O script exibe um roteiro interativo e solicita confirmação antes de iniciar. 
 | Ansible            | via Homebrew                     | via PPA ansible/ansible (Ubuntu) ou ansible-core (Debian)                    |
 | GitHub CLI (`gh`)  | via Homebrew                     | via repositório APT do GitHub                                                |
 
-
 ### Etapa 8 — Ferramentas Unix Modernas
 
 Instaladas via Homebrew em ambas as plataformas.

@@ -5,6 +5,7 @@
 Esta é a lista exaustiva de todos os aliases configurados pelo SetupVibe em todas as plataformas.
 
 **Leyenda de Disponibilidad:**
+
 - 🖥️ **Desktop**: Disponible en la edición Desktop (macOS y Linux Desktop).
 - ☁️ **Server**: Disponible en la edición Server (Linux).
 - 🌐 **Ambos**: Disponible en todas las ediciones.
@@ -900,6 +901,7 @@ Esta é a lista exaustiva de todos os aliases configurados pelo SetupVibe em tod
 ## Lenguajes y Frameworks (🖥️ Desktop)
 
 ### Laravel / PHP
+
 - **`art`**
   - Disponibilidad: 🖥️ Desktop
   - Comando: `php artisan`
@@ -1045,6 +1047,7 @@ Esta é a lista exaustiva de todos os aliases configurados pelo SetupVibe em tod
   - Ejemplo: `crun dev`
 
 ### Node / JavaScript
+
 - **`ni`**
   - Disponibilidad: 🌐 Ambos
   - Comando: `npm install`
@@ -1172,6 +1175,7 @@ Esta é a lista exaustiva de todos os aliases configurados pelo SetupVibe em tod
   - Ejemplo: `pnaddd vitest`
 
 ### Python / uv
+
 - **`py`**
   - Disponibilidad: 🖥️ Desktop
   - Comando: `python3`
@@ -1209,6 +1213,7 @@ Esta é a lista exaustiva de todos os aliases configurados pelo SetupVibe em tod
   - Ejemplo: `activate`
 
 ### Ruby / rbenv
+
 - **`rbv`**
   - Disponibilidad: 🖥️ Desktop
   - Comando: `rbenv versions`
@@ -1246,6 +1251,7 @@ Esta é a lista exaustiva de todos os aliases configurados pelo SetupVibe em tod
   - Ejemplo: `bupdate`
 
 ### Rust / Cargo
+
 - **`cb`**
   - Disponibilidad: 🖥️ Desktop
   - Comando: `cargo build`
@@ -1313,6 +1319,7 @@ Esta é a lista exaustiva de todos os aliases configurados pelo SetupVibe em tod
   - Ejemplo: `cdoc`
 
 ### Go
+
 - **`gobuild`**
   - Disponibilidad: 🖥️ Desktop
   - Comando: `go build ./...`
@@ -1462,6 +1469,7 @@ Esta é a lista exaustiva de todos os aliases configurados pelo SetupVibe em tod
   - Ejemplo: `cronr`
 
 ### Monitorización y Procesos
+
 - **`topc`**
   - Disponibilidad: 🌐 Ambos
   - Comando: `top -o cpu` (macOS) / `top -bn1 | head -20` (Linux)
@@ -1511,6 +1519,7 @@ Esta é a lista exaustiva de todos os aliases configurados pelo SetupVibe em tod
   - Ejemplo: `sysinfo`
 
 ### Systemd (Linux)
+
 - **`sstatus`**
   - Disponibilidad: ☁️ Server / 🖥️ Desktop Linux
   - Comando: `sudo systemctl status`
@@ -1592,6 +1601,7 @@ Esta é a lista exaustiva de todos os aliases configurados pelo SetupVibe em tod
   - Ejemplo: `flush`
 
 ### cURL / HTTP
+
 - **`get`**
   - Disponibilidad: 🌐 Ambos
   - Comando: `curl -s`
@@ -1623,6 +1633,7 @@ Esta é a lista exaustiva de todos os aliases configurados pelo SetupVibe em tod
   - Ejemplo: `timing google.com`
 
 ### JSON / YAML
+
 - **`jpp`**
   - Disponibilidad: 🌐 Ambos
   - Comando: `python3 -m json.tool`
@@ -1636,6 +1647,7 @@ Esta é a lista exaustiva de todos os aliases configurados pelo SetupVibe em tod
   - Ejemplo: `cat datos.json | jsonf`
 
 ### Seguridad y Certificados
+
 - **`certinfo`**
   - Disponibilidad: 🌐 Ambos
   - Comando: `openssl x509 -text -noout -in`
@@ -1661,6 +1673,7 @@ Esta é a lista exaustiva de todos os aliases configurados pelo SetupVibe em tod
   - Ejemplo: `genpass`
 
 ### Entorno
+
 - **`envls`**
   - Disponibilidad: 🌐 Ambos
   - Comando: `env | sort`

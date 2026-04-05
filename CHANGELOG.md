@@ -280,4 +280,3 @@ All notable changes to **SetupVibe** are documented in this file.
 - Initial README documentation
 
 ---
-

@@ -217,17 +217,18 @@ Fenced code blocks must be surrounded by one blank line before and after.
 
 **Wrong:**
 
-```markdown
+````markdown
 Some text.
 ```bash
 echo hello
 ```
+
 More text.
-```
+````
 
 **Correct:**
 
-```markdown
+````markdown
 Some text.
 
 ```bash
@@ -235,7 +236,7 @@ echo hello
 ```
 
 More text.
-```
+````
 
 ---
 
