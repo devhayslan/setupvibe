@@ -56,6 +56,16 @@ alias sku="npx skills update"                   # Atualiza todas as skills insta
 alias skun="npx skills remove"                  # Remove uma skill instalada (ex: skun nome)
 alias skc="npx skills check"                    # Verifica atualizações disponíveis
 
+# --- Spec-Kit (Spec-Driven Development) ---
+alias sp="specify"                              # Atalho principal do Spec-Kit
+alias spinit="specify init"                     # Inicializa projeto SDD (ex: spinit meu-app)
+alias spcheck="specify check"                   # Verifica se todas as dependências estão instaladas
+alias sphere="specify init --here"              # Inicializa SDD no diretório atual
+alias spci="specify init --here --ai claude"    # Inicia projeto SDD com Claude no diretório atual
+alias spgi="specify init --here --ai gemini"    # Inicia projeto SDD com Gemini no diretório atual
+alias spkpi="specify init --here --ai copilot"  # Inicia projeto SDD com Copilot no diretório atual
+alias spup="uv tool upgrade specify-cli"        # Atualiza o Spec-Kit para a versão mais recente
+
 # --- Shell ---
 alias zconfig="nano ~/.zshrc"                   # Edita o arquivo de configuração do ZSH
 alias reload="source ~/.zshrc"                  # Recarrega as configurações do ZSH sem reiniciar o terminal

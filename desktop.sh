@@ -1137,6 +1137,13 @@ step_13() {
         echo "Installing $pkg..."
         user_do npm install -g "$pkg" 2>/dev/null || echo -e "${YELLOW}⚠ Failed to install $pkg${NC}"
     done
+
+    echo "Installing Spec-Kit (specify-cli)..."
+    if ! user_do bash -c "export PATH=\$HOME/.local/bin:\$PATH; command -v specify" &>/dev/null; then
+        user_do bash -c "export PATH=\$HOME/.local/bin:\$PATH; uv tool install specify-cli"
+    else
+        user_do bash -c "export PATH=\$HOME/.local/bin:\$PATH; uv tool upgrade specify-cli" 2>/dev/null || true
+    fi
 }
 
 
