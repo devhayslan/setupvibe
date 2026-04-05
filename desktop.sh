@@ -648,18 +648,17 @@ step_3() {
         export COMPOSER_ALLOW_SUPERUSER=1
 
         # Check for composer in .local/bin or system path
+        export PATH="$REAL_HOME/.local/bin:$PATH"
         if ! command -v composer &>/dev/null && [ ! -f "$REAL_HOME/.local/bin/composer" ]; then
             echo "Installing Composer to $REAL_HOME/.local/bin..."
             user_do mkdir -p "$REAL_HOME/.local/bin"
-            curl -sS https://getcomposer.org/installer | user_do php
-            user_do mv composer.phar "$REAL_HOME/.local/bin/composer"
+            curl -sS https://getcomposer.org/installer | user_do php -- --install-dir="$REAL_HOME/.local/bin" --filename=composer
             user_do chmod +x "$REAL_HOME/.local/bin/composer"
         else
-            user_do composer self-update 2>/dev/null || sys_do composer self-update
+            user_do bash -c "export PATH=\"$REAL_HOME/.local/bin:\$PATH\"; composer self-update" 2>/dev/null || true
         fi
-        export PATH="$REAL_HOME/.local/bin:$PATH"
         echo "Setup Laravel Installer..."
-        user_do composer global require laravel/installer
+        user_do bash -c "export PATH=\"$REAL_HOME/.local/bin:\$PATH\"; composer global require laravel/installer"
     fi
 }
 
@@ -696,12 +695,12 @@ step_4() {
         echo "Checking Ruby 3.3.0..."
         if ! user_do bash -c 'export PATH="$HOME/.rbenv/bin:$PATH"; eval "$(rbenv init -)"; rbenv versions --bare | grep -q "^3.3.0$"'; then
             echo "Compiling Ruby 3.3.0 (this may take a few minutes)..."
-            # Optimization: Skip documentation and use parallel compilation
-            user_do bash -c 'export PATH="$HOME/.rbenv/bin:$PATH"; eval "$(rbenv init -)"; export RUBY_CONFIGURE_OPTS="--disable-install-doc"; export MAKE_OPTS="-j$(nproc 2>/dev/null || echo 2)"; rbenv install 3.3.0 && rbenv global 3.3.0'
+            # Use $HOME/.tmp as TMPDIR to avoid noexec on /tmp (common in cloud VMs)
+            user_do bash -c 'mkdir -p "$HOME/.tmp"; export TMPDIR="$HOME/.tmp"; export PATH="$HOME/.rbenv/bin:$PATH"; eval "$(rbenv init -)"; export RUBY_CONFIGURE_OPTS="--disable-install-doc"; export MAKE_OPTS="-j$(nproc 2>/dev/null || echo 2)"; rbenv install 3.3.0 && rbenv global 3.3.0'
         fi
 
         echo "Installing Rails..."
-        user_do bash -c 'export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"; gem install bundler rails --no-document'
+        user_do bash -c 'export PATH="$HOME/.rbenv/bin:$PATH"; eval "$(rbenv init -)"; rbenv rehash; gem install bundler rails --no-document'
     fi
 }
 
