@@ -66,4 +66,4 @@ Distribua as mudanças nas seções padronizadas do "Keep a Changelog":
 ```
 
 ---
-> Apply Markdown standards using the `/markdown-format` skill.
+

@@ -197,4 +197,4 @@ Substitua `<autor>` pelo login do usuário que abriu a issue (campo `author:` li
 
 ---
 
-> Apply Markdown standards using the `/markdown-format` skill.
+

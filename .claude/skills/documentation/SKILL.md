@@ -65,4 +65,4 @@ Antes de considerar a tarefa concluída, execute:
 3.  Verificação visual de que o rodapé padrão está presente.
 
 ---
-> Apply Markdown standards using the `/markdown-format` skill.
+

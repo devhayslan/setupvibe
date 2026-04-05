@@ -24,7 +24,7 @@ Every Markdown file in this project must follow these rules:
 
 ```markdown
 ---
-> Apply Markdown standards using the `/markdown-format` skill.
+
 ```
 
 ## How to Apply
@@ -52,4 +52,4 @@ For each `.md` file modified or created:
 Use `markdown-format` when a task creates or edits Markdown in this repository.
 
 ---
-> Apply Markdown standards using the `/markdown-format` skill.
+

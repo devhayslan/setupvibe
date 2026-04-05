@@ -57,4 +57,4 @@ Para garantir a perfeição visual e técnica do `CHANGELOG.md`:
 ```
 
 ---
-> Apply Markdown standards using the `/markdown-format` skill.
+
