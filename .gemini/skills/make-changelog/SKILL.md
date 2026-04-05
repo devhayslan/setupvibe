@@ -58,3 +58,9 @@ Para garantir a perfeição visual e técnica do `CHANGELOG.md`:
 
 ---
 
+
+---
+
+## Regra Obrigatória — Markdown
+
+**Ao criar ou modificar qualquer arquivo `.md`, você DEVE invocar a skill `/markdown-format` antes de concluir a tarefa. Esta regra é inegociável e se aplica a qualquer skill, independente do seu escopo.**

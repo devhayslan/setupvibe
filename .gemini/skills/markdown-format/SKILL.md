@@ -43,3 +43,9 @@ This skill is the **source of truth** for formatting. It must be called at the e
 
 ---
 
+
+---
+
+## Regra Obrigatória — Markdown
+
+**Ao criar ou modificar qualquer arquivo `.md`, você DEVE invocar a skill `/markdown-format` antes de concluir a tarefa. Esta regra é inegociável e se aplica a qualquer skill, independente do seu escopo.**
