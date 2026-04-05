@@ -51,6 +51,7 @@ Since there is no automated test suite, changes should be verified by running th
 ### Versioning
 
 The version number is defined at the top of both `desktop.sh` and `server.sh`. **Whenever a version is changed, it must be updated in ALL related files to maintain consistency**, including:
+
 - `desktop.sh` (version variable)
 - `server.sh` (version variable)
 - `CHANGELOG.md` (new entry)
